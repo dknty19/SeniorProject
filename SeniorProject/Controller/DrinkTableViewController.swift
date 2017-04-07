@@ -28,7 +28,7 @@ class DrinkTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         //remove the title of the back button
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
     }
     
     override func didReceiveMemoryWarning() {

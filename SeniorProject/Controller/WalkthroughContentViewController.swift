@@ -49,7 +49,6 @@ class WalkthroughContentViewController: UIViewController {
         case 2:
             UserDefaults.standard.set(true, forKey: "hasViewed")
             dismiss(animated: true, completion: nil)
-            print("====")
         default: break
         }
     }
