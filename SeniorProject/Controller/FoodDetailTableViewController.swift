@@ -17,9 +17,10 @@ class FoodDetailTableViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        foodImageView.image = UIImage(named: food.image)
         
+        if let imageURL = URL.init(string: food.imageURL) {
+            foodImageView.downloadedFrom(url: imageURL)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

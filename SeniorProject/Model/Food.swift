@@ -7,17 +7,32 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseDatabase
 
-class Food {
+struct Food {
+    var key:String
     var name:String
-    var image:String
+    var imageURL:String
     var price:Int
+    let ref:FIRDatabaseReference!
     var quantity:Int?
     
-    init(name:String, image:String, price:Int, quantity:Int?) {
+    init(key:String = "", name:String, imageURL:String, price:Int) {
+        self.key = key
         self.name = name
-        self.image = image
+        self.imageURL = imageURL
         self.price = price
-        self.quantity = quantity
+        self.quantity = 0 as Int
+        self.ref = nil
+    }
+    
+    init(snapshot: FIRDataSnapshot) {
+        key = snapshot.key
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        name = snapshotValue["name"] as! String
+        imageURL = snapshotValue["imageURL"] as! String
+        price = snapshotValue["price"] as! Int
+        ref = snapshot.ref
     }
 }

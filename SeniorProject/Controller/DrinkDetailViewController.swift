@@ -18,14 +18,13 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drinkImageView.image = UIImage(named: drink.image)
+        drinkImageView.image = UIImage(named: drink.imageURL)
         
         //background color in table view
         tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
         
         //title nav bar
         title = drink.name
-        print("\(title)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

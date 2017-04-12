@@ -1,21 +1,20 @@
 //
-//  SidebarMenuTableViewController.swift
+//  AddRestaurantController.swift
 //  Test
 //
-//  Created by Vinh (Vern) H. NGUYEN on 3/27/17.
+//  Created by Vinh (Vern) H. NGUYEN on 3/22/17.
 //  Copyright (c) 2017 Vinh (Vern) H. NGUYEN. All rights reserved.
 //
 
 import UIKit
 
-class SidebarMenuTableViewController: UITableViewController {
-    
-    @IBOutlet weak var loginLabel: UILabel!
-    @IBOutlet weak var registerLabel: UILabel!
-    @IBOutlet weak var historyLabel: UILabel!
-    @IBOutlet weak var aboutUsLabel: UILabel!
-    
+class AddDrinkController: UITableViewController {
 
+    @IBOutlet var photoImageURL: UIImageView!
+    @IBOutlet var nameTextField:UITextField!
+    @IBOutlet var typeTextField:UITextField!
+    @IBOutlet var locationTextField:UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,9 +23,6 @@ class SidebarMenuTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // delete a blank cell in table view
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,24 +31,6 @@ class SidebarMenuTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 4
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            
-        }
-    }
     
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -69,18 +47,6 @@ class SidebarMenuTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
     }
     */
 
@@ -108,5 +74,4 @@ class SidebarMenuTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
 }

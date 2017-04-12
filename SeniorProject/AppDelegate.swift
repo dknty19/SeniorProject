@@ -8,7 +8,9 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,21 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        // Firebase
-        FIRApp.configure()
+        // Override point for customization after application launch
         
         //modify the background of nav bar
-        UINavigationBar.appearance().barTintColor = UIColor(red: 225.0/255.0, green: 80.0/255.0, blue: 85.0/255.0, alpha: 1)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 255.0/255.0, green: 128.0/255.0, blue: 0/255.0, alpha: 1)
         UINavigationBar.appearance().tintColor = UIColor.white
         if let barFont = UIFont(name: "Avenir-Light", size: 24.0){
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:barFont]
         }
-        UITabBar.appearance().barTintColor = UIColor(red: 225.0/255.0, green: 80.0/255.0, blue: 85.0/255.0, alpha: 1)
+        UITabBar.appearance().barTintColor = UIColor(red: 255.0/255.0, green: 128.0/255.0, blue: 0/255.0, alpha: 1)
         UITabBar.appearance().tintColor = UIColor.white
         UITabBar.appearance().backgroundColor = UIColor.black
         
         return true
+    }
+    
+    // Firebase config
+    override init () {
+        FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
