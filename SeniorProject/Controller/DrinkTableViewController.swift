@@ -14,9 +14,13 @@ import FirebaseStorage
 class DrinkTableViewController: UITableViewController {
     
     var drinks:[Drink] = []
-    let ref = FIRDatabase.database().reference(withPath: "Restaurant/Drinks")
+    
     
     override func viewDidLoad() {
+        
+        // properties
+        let ref = FIRDatabase.database().reference(withPath: "Restaurant/Drinks")
+        
         //remove the title of the back button
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
         ref.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
@@ -58,11 +62,13 @@ class DrinkTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DrinkTableViewCell
         
-        let drink = drinks[indexPath.row]
-        cell.drinkImageView.image = UIImage(named: drink.imageURL)
-        cell.nameDrinkLabel.text = drink.name
-        cell.priceDrinkLabel.text = String(drink.price)
-        cell.typeDrinkLabel.text = drink.type
+        let drinkItem = drinks[indexPath.row]
+        cell.nameDrinkLabel.text = drinkItem.name
+        cell.priceDrinkLabel.text = String(drinkItem.price)
+        cell.typeDrinkLabel.text = drinkItem.type
+        if let imageURL = URL.init(string: drinkItem.imageURL) {
+            cell.drinkImageView.downloadedFrom(url: imageURL)
+        }
         
         return cell
     }
@@ -148,23 +154,7 @@ class DrinkTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func unwindToHomeScreen(_ segue: UIStoryboardSegue) {
-        
-    }
+    @IBAction func unwindToHomeScreen(_ segue: UIStoryboardSegue) {}
     
-    @IBAction func addButtonDidTouch(_ sender: AnyObject) {
-        
-                                        // get the textfield from alert controller
-        
-//                                            let text = textField.text
-        
-//                                        // add data
-//                                        let drinkItem = Drink(name: text, type: text, price: Int(text)!, imageURL: text)
-//                                        // add note child
-//                                        let drinkItemRef = self.ref.child(text)
-//                                        
-//                                        //
-//                                        drinkItemRef.setValue(drinkItem.toAnyObject())
-    }
-
+    @IBAction func cancelAddDrink(_ segue: UIStoryboardSegue) {}
 }

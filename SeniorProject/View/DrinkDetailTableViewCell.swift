@@ -12,9 +12,8 @@ class DrinkDetailTableViewCell: UITableViewCell {
     
     @IBOutlet var descriptionTextField:UITextField!
     @IBOutlet var labelIncre:UILabel!
+    @IBOutlet var labelPrice:UILabel!
     @IBOutlet var labelNameDrink:UILabel!
-    
-    var drink:Drink!
     
     var valueLabel: Int = 1
     
@@ -27,7 +26,6 @@ class DrinkDetailTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
         NotificationCenter.default.addObserver(self, selector: #selector(DrinkDetailTableViewCell.add(_:)), name: NSNotification.Name(rawValue: "changeLabel"), object: nil)
     }
     

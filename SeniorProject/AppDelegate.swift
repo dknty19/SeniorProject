@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Firebase config
     override init () {
         FIRApp.configure()
-        FIRDatabase.database().persistenceEnabled = true
+        //FIRDatabase.database().persistenceEnabled = true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
