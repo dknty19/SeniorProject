@@ -7,13 +7,19 @@
 //
 
 import Foundation
+import FirebaseAuth
 
-class User {
-    var username:String
-    var password:String
+struct User {
+    var uid:String
+    var email:String
     
-    init(username:String, password:String) {
-        self.username = username
-        self.password = password
+    init(authData: FIRUser) {
+        uid = authData.uid
+        email = authData.email!
+    }
+    
+    init(uid:String, email:String) {
+        self.uid = uid
+        self.email = email
     }
 }

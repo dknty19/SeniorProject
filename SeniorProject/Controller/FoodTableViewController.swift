@@ -7,36 +7,36 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseStorage
 
 class FoodTableViewController: UITableViewController {
     
-    var foods:[Food] = [
-        Food(name: "charcuterie", image:"charcuterie", price: 2, quantity: Int()),
-        Food(name: "Custard French Toast", image:"custard-french-toast", price: 15, quantity: Int()),
-        Food(name: "Fried Eggs", image:"Fried-eggs", price: 3, quantity: Int()),
-        Food(name: "Island Duck", image:"island-duck", price: 2, quantity: Int()),
-        Food(name: "Lamb Salad", image:"lamb-salad", price: 4, quantity: Int()),
-        Food(name: "Pappardelle", image:"pappardelle", price: 3, quantity: Int()),
-        Food(name: "Pasta Lamb Ragu", image:"pasta-lamb-ragu", price: 3, quantity: Int()),
-        Food(name: "Pork Rillette", image:"pork-rillette", price: 4, quantity: Int()),
-        Food(name: "Smoked Pock", image:"smoked-pork", price: 2, quantity: Int()),
-        Food(name: "charcuterie", image:"charcuterie", price: 3, quantity: Int()),
-        Food(name: "Island Duck", image:"island-duck", price: 3, quantity: Int()),
-    ]
-
+    var foods: [Food] = []
+    let ref = FIRDatabase.database().reference(withPath: "Restaurant/Foods")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //remove the title of the back button
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+    
+        ref.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+            var newFoods: [Food] = []
+            
+            for item in snapshot.children {
+                let food = Food(snapshot: item as! FIRDataSnapshot)
+                newFoods.append(food)
+            }
+            
+            self.foods = newFoods
+            self.tableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -59,58 +59,19 @@ class FoodTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FoodTableViewCell
-
-        cell.nameFoodLabel.text = foods[indexPath.row].name
-        cell.foodImageView.image = UIImage(named: foods[indexPath.row].image)
-        cell.priceFoodLabel.text = String(foods[indexPath.row].price)
-
+        
+        let foodItem = foods[indexPath.row]
+        cell.nameFoodLabel.text = foodItem.name
+        cell.priceFoodLabel.text = String(foodItem.price)
+        if let imageURL = URL.init(string: foodItem.imageURL) {
+            cell.foodImageView.downloadedFrom(url: imageURL)
+        }
+        
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFoodDetail" {
@@ -120,5 +81,25 @@ class FoodTableViewController: UITableViewController {
                 destinationController.hidesBottomBarWhenPushed = false
             }
         }
+    }
+}
+    // extension for download image from url
+extension UIImageView {
+    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { () -> Void in
+                self.image = image
+            }
+            }.resume()
+    }
+    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloadedFrom(url: url, contentMode: mode)
     }
 }

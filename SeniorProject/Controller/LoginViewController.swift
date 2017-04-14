@@ -16,10 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var users:[User] = [
-        User(username: "vinh", password: "12345"),
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,6 +51,7 @@ class LoginViewController: UIViewController {
             alertController.addAction(defaultAction)
             
             self.present(alertController, animated: true, completion: nil)
+            print("Cannot login 1")
             
         } else {
             
@@ -62,13 +59,10 @@ class LoginViewController: UIViewController {
             
                 if error == nil {
                     
-                    //Print into the console if successfully logged in
-                    print("You have successfully logged in")
-                    
                     //Go to the HomeViewController if the login is sucessful
                     self.performSegue(withIdentifier: "login", sender: self)
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-                    self.present(vc!, animated: true, completion: nil)
+//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
+//                    self.present(vc!, animated: true, completion: nil)
                     
                 } else {
                     
@@ -79,6 +73,8 @@ class LoginViewController: UIViewController {
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
+                    
+                    print("-------Cannot login 1-------")
                 }
             }
         }

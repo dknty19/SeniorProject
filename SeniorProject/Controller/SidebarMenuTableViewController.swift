@@ -47,7 +47,13 @@ class SidebarMenuTableViewController: UITableViewController {
         // Return the number of rows in the section.
         return 4
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            
+        }
+    }
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
@@ -102,5 +108,5 @@ class SidebarMenuTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

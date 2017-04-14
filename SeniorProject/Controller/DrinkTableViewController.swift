@@ -7,28 +7,33 @@
 //
 import Foundation
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseStorage
 
 class DrinkTableViewController: UITableViewController {
     
-    var drinks:[Drink] = [
-        Drink(name: "Cafe Deadend", type: "Coffee & Tea Shop",price: 3 ,image: "cafedeadend.jpg"),
-        Drink(name: "Homei", type: "Cafe", price: 2, image: "homei.jpg"),
-        Drink(name: "Teakha", type: "Tea House", price: 3, image: "teakha.jpg"),
-        Drink(name: "Cafe loisl", type: "Austrian / Causual Drink", price: 2, image: "cafeloisl.jpg"),
-        Drink(name: "Palomino Espresso", type: "American Coffee", price: 1, image: "palominoespresso.jpg"),
-        Drink(name: "Cafe Lore", type: "Latin American", price: 4, image: "cafelore.jpg"),
-        Drink(name: "Waffle & Wolf", type: "Coffee & Tea", price: 5, image: "wafflewolf.jpg"),
-        Drink(name: "Five Leaves", type: "Coffee & Tea", price: 1, image: "fiveleaves.jpg"),
-        Drink(name: "Bourke Street Backery", type: "Coffee & Tea", price: 2, image: "bourkestreetbakery.jpg"),
-        Drink(name: "Haigh's Chocolate", type: "Cafe", price: 3, image: "haighschocolate.jpg"),
-        Drink(name: "Upstate", type: "American", price: 3, image: "upstate.jpg"),
-        Drink(name: "Traif", type: "American", price: 5, image: "traif.jpg"),
-        Drink(name: "Graham Avenue Meats", type: "Breakfast & Brunch", price: 2, image: "grahamavenuemeats.jpg")
-    ]
+    var drinks:[Drink] = []
+    
     
     override func viewDidLoad() {
+        
+        // properties
+        let ref = FIRDatabase.database().reference(withPath: "Restaurant/Drinks")
+        
         //remove the title of the back button
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+        ref.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+            var newDrinks: [Drink] = []
+            
+            for item in snapshot.children {
+                let drink = Drink(snapshot: item as! FIRDataSnapshot)
+                newDrinks.append(drink)
+            }
+            
+            self.drinks = newDrinks
+            self.tableView.reloadData()
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,14 +62,13 @@ class DrinkTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DrinkTableViewCell
         
-        let drink = drinks[indexPath.row]
-        cell.drinkImageView.image = UIImage(named: drink.image)
-        cell.nameDrinkLabel.text = drink.name
-        cell.priceDrinkLabel.text = String(drink.price)
-        cell.typeDrinkLabel.text = drink.type
-//        cell.telephoneLabel.text = restaurant.phone
-        
-        //cell.accessoryType = restaurants[indexPath.row].isVisited ? .Checkmark : .None
+        let drinkItem = drinks[indexPath.row]
+        cell.nameDrinkLabel.text = drinkItem.name
+        cell.priceDrinkLabel.text = String(drinkItem.price)
+        cell.typeDrinkLabel.text = drinkItem.type
+        if let imageURL = URL.init(string: drinkItem.imageURL) {
+            cell.drinkImageView.downloadedFrom(url: imageURL)
+        }
         
         return cell
     }
@@ -105,7 +109,8 @@ class DrinkTableViewController: UITableViewController {
 //        //display menu
 //        presentViewController(optionMenu, animated: true, completion: nil)
 //    }
-    
+
+    /* delete cell and share button
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             //delete the row from datasource
@@ -134,6 +139,10 @@ class DrinkTableViewController: UITableViewController {
         
         return [deleteAction, sharedAction]
     }
+    */
+    
+    
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDrinkDetail" {
@@ -145,53 +154,7 @@ class DrinkTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func unwindToHomeScreen(_ segue: UIStoryboardSegue) {
+    @IBAction func unwindToHomeScreen(_ segue: UIStoryboardSegue) {}
     
-    }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
+    @IBAction func cancelAddDrink(_ segue: UIStoryboardSegue) {}
 }

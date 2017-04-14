@@ -18,14 +18,15 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drinkImageView.image = UIImage(named: drink.image)
+        if let imageURL = URL.init(string: drink.imageURL) {
+            drinkImageView.downloadedFrom(url: imageURL)
+        }
         
         //background color in table view
         tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
         
         //title nav bar
         title = drink.name
-        print("\(title)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +45,8 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         cell.descriptionTextField.text = drink.type
         cell.labelNameDrink.text = drink.name
-        cell.backgroundColor = UIColor(red: 225.0/255.0, green: 110.0/255, blue: 85.0/255, alpha: 0.8)
+        cell.labelPrice.text = String(drink.price)
+        cell.backgroundColor = UIColor(red: 255.0/255.0, green: 128.0/255, blue: 0/255, alpha: 0.8)
         
         return cell
     }
@@ -89,5 +91,7 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
 //            destinationController.restaurant = restaurant
 //        }
 //    }
-
+    func add(_ notification: Notification) {
+        
+    }
 }

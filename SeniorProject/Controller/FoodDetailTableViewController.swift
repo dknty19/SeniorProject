@@ -17,9 +17,10 @@ class FoodDetailTableViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        foodImageView.image = UIImage(named: food.image)
         
+        if let imageURL = URL.init(string: food.imageURL) {
+            foodImageView.downloadedFrom(url: imageURL)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,7 +50,7 @@ class FoodDetailTableViewController: UIViewController, UITableViewDelegate, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FoodDetailTableViewCell
         
         cell.descriptionTextField.text = food.name
-        cell.backgroundColor = UIColor(red: 225.0/255.0, green: 110.0/255, blue: 85.0/255, alpha: 0.8)
+        cell.backgroundColor = UIColor(red: 255.0/255.0, green: 128/255, blue: 0/255, alpha: 0.8)
         
         return cell
     }
