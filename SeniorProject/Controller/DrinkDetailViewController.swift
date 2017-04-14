@@ -46,7 +46,7 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
         cell.descriptionTextField.text = drink.type
         cell.labelNameDrink.text = drink.name
         cell.labelPrice.text = String(drink.price)
-        cell.backgroundColor = UIColor(red: 255.0/255.0, green: 128.0/255, blue: 0/255, alpha: 1)
+        cell.backgroundColor = UIColor(red: 255.0/255.0, green: 128.0/255, blue: 0/255, alpha: 0.8)
         
         return cell
     }
@@ -91,5 +91,7 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
 //            destinationController.restaurant = restaurant
 //        }
 //    }
-
+    func add(_ notification: Notification) {
+        
+    }
 }

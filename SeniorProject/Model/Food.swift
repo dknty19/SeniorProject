@@ -16,14 +16,14 @@ struct Food {
     var imageURL:String
     var price:Int
     let ref:FIRDatabaseReference!
-    var quantity:Int?
+//    var quantity:Int?
     
     init(key:String = "", name:String, imageURL:String, price:Int) {
         self.key = key
         self.name = name
         self.imageURL = imageURL
         self.price = price
-        self.quantity = 0 as Int
+//        self.quantity = 0 as Int
         self.ref = nil
     }
     

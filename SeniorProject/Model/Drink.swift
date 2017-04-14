@@ -16,7 +16,7 @@ class Drink {
     var type:String
     var price:Int
     let ref:FIRDatabaseReference!
-    var quantity:Int?
+//    var quantity:Int?
     var imageURL:String
     
     init(key:String = "", name:String, type: String, price: Int, imageURL: String) {
@@ -25,7 +25,7 @@ class Drink {
         self.type = type
         self.price = price
         self.imageURL = imageURL
-        self.quantity = 0 as Int
+//        self.quantity = 0 as Int
         self.ref = nil
     }
     
