@@ -8,13 +8,22 @@
 
 import UIKit
 
-class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DrinkDetailViewController: UIViewController {
     
     @IBOutlet var drinkImageView:UIImageView!
-    @IBOutlet var tableView:UITableView!
+    @IBOutlet var totalTextField:UITextField!
+    @IBOutlet var descriptionTextField:UITextField!
+    @IBOutlet var increLabel:UILabel!
+    @IBOutlet var priceLabel:UILabel!
+    @IBOutlet var nameDrinkLabel:UILabel!
     
+    var defaultQuantity = 1
+//    var total = 0
+    
+    var bill:Bill!
+    var bills = [Bill]()
     var drink:Drink!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,32 +32,20 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         //background color in table view
-        tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
+//        tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
         
         //title nav bar
         title = drink.name
+        
+        descriptionTextField.text = drink.type
+        increLabel.text = String(defaultQuantity)
+        priceLabel.text = String(drink.price)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.hidesBarsOnSwipe = true
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DrinkDetailTableViewCell
-        
-        cell.descriptionTextField.text = drink.type
-        cell.labelNameDrink.text = drink.name
-        cell.labelPrice.text = String(drink.price)
-        cell.backgroundColor = UIColor(red: 255.0/255.0, green: 128.0/255, blue: 0/255, alpha: 0.8)
-        
-        return cell
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,9 +71,9 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
 //        tableView.reloadData()
 //    }
     
-    /*
-    // MARK: - Navigation
     
+    // MARK: - Navigation
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Get the new view controller using segue.destinationViewController.
@@ -91,7 +88,35 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
 //            destinationController.restaurant = restaurant
 //        }
 //    }
-    func add(_ notification: Notification) {
+    
+    @IBAction func submitOrder(_ sender: UIButton!) {
         
+    }
+    
+    @IBAction func addDrinkToLabel(_ sender: UIButton) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addToCart" {
+            defaultQuantity += 1
+            increLabel.text = "\(defaultQuantity)"
+            
+            nameDrinkLabel.text = drink.name
+            totalTextField.text = String(defaultQuantity * drink.price)
+            
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//            appDelegate.switchToCartTab()
+            
+            let quantity = Int(increLabel.text!)!
+            let price = Int(totalTextField.text!)!
+            
+            bill = Bill(quantity: quantity, price: price)
+            
+            let destinationController = segue.destination as! CartTableViewController
+            destinationController.drinkCart = drink
+            destinationController.bill = bill
+//            destinationController.bills = bills
+        }
     }
 }

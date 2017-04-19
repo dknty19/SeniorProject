@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D23918D1EA5B9B3007DC08B /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23918C1EA5B9B2007DC08B /* CartTableViewController.swift */; };
+		1D23918F1EA5C5D6007DC08B /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23918E1EA5C5D5007DC08B /* CartTableViewCell.swift */; };
+		1D5439E21EA0C37B00470823 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5439E11EA0C37B00470823 /* Bill.swift */; };
 		1D5875461E972CD800A686DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D5875451E972CD800A686DE /* GoogleService-Info.plist */; };
 		1D5875561E974A9400A686DE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5875551E974A9400A686DE /* SWRevealViewController.m */; };
 		1DC557C21E9772360098D691 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC557C11E9772360098D691 /* RegisterViewController.swift */; };
@@ -26,8 +29,6 @@
 		57A6C9921E7F8A8A0035162B /* DrinkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A6C9911E7F8A8A0035162B /* DrinkTableViewController.swift */; };
 		57AF60D11E8138A500EBC821 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AF60D01E8138A500EBC821 /* ReviewViewController.swift */; };
 		57D654381E88F36D00B9458F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D654371E88F36D00B9458F /* LoginViewController.swift */; };
-		57E7B7A11E84BC100064735C /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E7B7A01E84BC100064735C /* AboutTableViewController.swift */; };
-		57E7B7A31E84C0BE0064735C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E7B7A21E84C0BE0064735C /* WebViewController.swift */; };
 		57F411F81E7B9DE600D7BF56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F411F71E7B9DE600D7BF56 /* AppDelegate.swift */; };
 		57F411FD1E7B9DE600D7BF56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F411FB1E7B9DE600D7BF56 /* Main.storyboard */; };
 		57F411FF1E7B9DE600D7BF56 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F411FE1E7B9DE600D7BF56 /* Images.xcassets */; };
@@ -53,6 +54,9 @@
 
 /* Begin PBXFileReference section */
 		131CB843FF9A5C88C41954CB /* Pods_SeniorProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeniorProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D23918C1EA5B9B2007DC08B /* CartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartTableViewController.swift; path = Controller/CartTableViewController.swift; sourceTree = "<group>"; };
+		1D23918E1EA5C5D5007DC08B /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		1D5439E11EA0C37B00470823 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		1D5875451E972CD800A686DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D5875531E974A9300A686DE /* SeniorProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeniorProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D5875541E974A9400A686DE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
@@ -76,8 +80,6 @@
 		57A6C9911E7F8A8A0035162B /* DrinkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkTableViewController.swift; path = Controller/DrinkTableViewController.swift; sourceTree = "<group>"; };
 		57AF60D01E8138A500EBC821 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewViewController.swift; path = Controller/ReviewViewController.swift; sourceTree = "<group>"; };
 		57D654371E88F36D00B9458F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controller/LoginViewController.swift; sourceTree = "<group>"; };
-		57E7B7A01E84BC100064735C /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutTableViewController.swift; path = Controller/AboutTableViewController.swift; sourceTree = "<group>"; };
-		57E7B7A21E84C0BE0064735C /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = Controller/WebViewController.swift; sourceTree = "<group>"; };
 		57F411F21E7B9DE600D7BF56 /* SeniorProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeniorProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F411F61E7B9DE600D7BF56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57F411F71E7B9DE600D7BF56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,10 +142,9 @@
 				5746B5D21E91FDEE00230EF4 /* FoodDetailTableViewController.swift */,
 				57A6C9911E7F8A8A0035162B /* DrinkTableViewController.swift */,
 				576BB2DD1E80F7AC00599373 /* DrinkDetailViewController.swift */,
+				1D23918C1EA5B9B2007DC08B /* CartTableViewController.swift */,
 				5719D8641E822ED800F9ADE6 /* AddDrinkController.swift */,
-				57E7B7A01E84BC100064735C /* AboutTableViewController.swift */,
 				57AF60D01E8138A500EBC821 /* ReviewViewController.swift */,
-				57E7B7A21E84C0BE0064735C /* WebViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -156,6 +157,7 @@
 				5762DC831E7F8DA300F98C04 /* DrinkTableViewCell.swift */,
 				5746A3BA1E92383E0062DF0F /* DrinkDetailTableViewCell.swift */,
 				576BB2DF1E8105A400599373 /* RestaurantDetailTableViewCell.swift */,
+				1D23918E1EA5C5D5007DC08B /* CartTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -167,6 +169,7 @@
 				57A613771E8A53BA00478D79 /* User.swift */,
 				578336A71E91EE8B006E803B /* Food.swift */,
 				5746B5D61E92065000230EF4 /* Drink.swift */,
+				1D5439E11EA0C37B00470823 /* Bill.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -469,9 +472,12 @@
 				57F648CD1E88B1F2008B7DBB /* SidebarMenuTableViewController.swift in Sources */,
 				578336A81E91EE8B006E803B /* Food.swift in Sources */,
 				576BB2DE1E80F7AC00599373 /* DrinkDetailViewController.swift in Sources */,
+				1D23918F1EA5C5D6007DC08B /* CartTableViewCell.swift in Sources */,
+				1D23918D1EA5B9B3007DC08B /* CartTableViewController.swift in Sources */,
 				5719D8651E822ED800F9ADE6 /* AddDrinkController.swift in Sources */,
 				57A613781E8A53BA00478D79 /* User.swift in Sources */,
 				57F4121A1E7BA43100D7BF56 /* WalkthroughPageViewController.swift in Sources */,
+				1D5439E21EA0C37B00470823 /* Bill.swift in Sources */,
 				5746B5D51E91FE6000230EF4 /* FoodDetailTableViewCell.swift in Sources */,
 				1D5875561E974A9400A686DE /* SWRevealViewController.m in Sources */,
 				578336AA1E91EF76006E803B /* FoodTableViewController.swift in Sources */,
@@ -484,8 +490,6 @@
 				5746B5D71E92065000230EF4 /* Drink.swift in Sources */,
 				57D654381E88F36D00B9458F /* LoginViewController.swift in Sources */,
 				578336AC1E91F09A006E803B /* FoodTableViewCell.swift in Sources */,
-				57E7B7A31E84C0BE0064735C /* WebViewController.swift in Sources */,
-				57E7B7A11E84BC100064735C /* AboutTableViewController.swift in Sources */,
 				5746A3BB1E92383E0062DF0F /* DrinkDetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,6 +23,8 @@ class DrinkTableViewController: UITableViewController {
         
         //remove the title of the back button
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+        
+        //add data to firebase
         ref.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
             var newDrinks: [Drink] = []
             

@@ -15,6 +15,8 @@ class DrinkDetailTableViewCell: UITableViewCell {
     @IBOutlet var labelPrice:UILabel!
     @IBOutlet var labelNameDrink:UILabel!
     
+    var drinkCell:Drink!
+    
     var valueLabel: Int = 1
     
     override func awakeFromNib() {
@@ -26,16 +28,13 @@ class DrinkDetailTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(DrinkDetailViewController.add(_:)), name: NSNotification.Name(rawValue: "changeLabel"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DrinkDetailTableViewCell.add(_:)), name: NSNotification.Name(rawValue: "changeLabel"), object: nil)
     }
     
-//    func add(_ notification: Notification) {
-//    }
+    func add(_ notification: Notification) {
+//        labelNameDrink.text = drinkCell.name
+    }
     
     //MARK: - Action
-    @IBAction func addDrinkToLabel(_ sender: UIButton) {
-        labelIncre.text = "\(valueLabel)"
-        valueLabel += 1
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "changeLabel"), object: nil, userInfo: nil)
-    }
+    
 }
