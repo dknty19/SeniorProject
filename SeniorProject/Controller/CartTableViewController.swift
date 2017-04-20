@@ -16,6 +16,7 @@ class CartTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,22 +33,18 @@ class CartTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        //return bills.count
+        return cart.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CartTableViewCell
-        if drinkCart == nil {
-            print("nothing")
-        }else {
-            cell.nameItemLabel.text = drinkCart.name
-            cell.quantityItemLabel.text = String(bill.quantity)
-            cell.totalPriceLabel.text = String(bill.price)
-            
-            bills.append(bill)
-            print(bills.count)
         
-        }
+            let billItem = cart[indexPath.row]
+            cell.nameItemLabel.text = billItem.name
+            cell.quantityItemLabel.text = String(billItem.quantity)
+            cell.totalPriceLabel.text = String(billItem.price)
+        
         return cell
     }
 
@@ -95,5 +92,4 @@ class CartTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

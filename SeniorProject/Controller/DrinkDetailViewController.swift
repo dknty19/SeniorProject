@@ -94,29 +94,37 @@ class DrinkDetailViewController: UIViewController {
     }
     
     @IBAction func addDrinkToLabel(_ sender: UIButton) {
+        defaultQuantity += 1
+        increLabel.text = "\(defaultQuantity)"
         
+        nameDrinkLabel.text = drink.name
+        totalTextField.text = String(defaultQuantity * drink.price)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationController = segue.destination as! CartTableViewController
         if segue.identifier == "addToCart" {
-            defaultQuantity += 1
-            increLabel.text = "\(defaultQuantity)"
-            
-            nameDrinkLabel.text = drink.name
-            totalTextField.text = String(defaultQuantity * drink.price)
-            
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            appDelegate.switchToCartTab()
             
             let quantity = Int(increLabel.text!)!
             let price = Int(totalTextField.text!)!
+            let name = drink.name
             
-            bill = Bill(quantity: quantity, price: price)
+            bill = Bill(name: name, quantity: quantity, price: price)
+            cart.append(bill)
             
-            let destinationController = segue.destination as! CartTableViewController
+            
             destinationController.drinkCart = drink
             destinationController.bill = bill
-//            destinationController.bills = bills
+            //destinationController.bills = bills
+            
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//            appDelegate.switchToCartTab()
+        }
+        
+        if segue.identifier == "showCart" {
+            destinationController.drinkCart = drink
+            destinationController.bill = bill
+            //destinationController.bills = bills
         }
     }
 }

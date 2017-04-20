@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D176EE41EA84ED70054240F /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D176EE31EA84ED70054240F /* Core.swift */; };
 		1D23918D1EA5B9B3007DC08B /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23918C1EA5B9B2007DC08B /* CartTableViewController.swift */; };
 		1D23918F1EA5C5D6007DC08B /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D23918E1EA5C5D5007DC08B /* CartTableViewCell.swift */; };
 		1D5439E21EA0C37B00470823 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5439E11EA0C37B00470823 /* Bill.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		131CB843FF9A5C88C41954CB /* Pods_SeniorProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeniorProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D176EE31EA84ED70054240F /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		1D23918C1EA5B9B2007DC08B /* CartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartTableViewController.swift; path = Controller/CartTableViewController.swift; sourceTree = "<group>"; };
 		1D23918E1EA5C5D5007DC08B /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		1D5439E11EA0C37B00470823 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		57F411F41E7B9DE600D7BF56 /* SeniorProject */ = {
 			isa = PBXGroup;
 			children = (
+				1D176EE31EA84ED70054240F /* Core.swift */,
 				1D94E5ED1E9DCA7800E2C2AB /* SeniorProject.entitlements */,
 				57F411F71E7B9DE600D7BF56 /* AppDelegate.swift */,
 				1D5875521E974A7700A686DE /* SWRevealViewController */,
@@ -474,6 +477,7 @@
 				576BB2DE1E80F7AC00599373 /* DrinkDetailViewController.swift in Sources */,
 				1D23918F1EA5C5D6007DC08B /* CartTableViewCell.swift in Sources */,
 				1D23918D1EA5B9B3007DC08B /* CartTableViewController.swift in Sources */,
+				1D176EE41EA84ED70054240F /* Core.swift in Sources */,
 				5719D8651E822ED800F9ADE6 /* AddDrinkController.swift in Sources */,
 				57A613781E8A53BA00478D79 /* User.swift in Sources */,
 				57F4121A1E7BA43100D7BF56 /* WalkthroughPageViewController.swift in Sources */,

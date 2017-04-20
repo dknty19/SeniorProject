@@ -120,7 +120,7 @@ class WelcomeTableViewController: UITableViewController {
 //    @IBAction func userLoginIntoRestaurant(sender: AnyObject) {
 //        
 //    }
-    
+        
     // unwind segue
     @IBAction func closeLogin(_ segue: UIStoryboardSegue) {
     }
