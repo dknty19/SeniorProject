@@ -161,9 +161,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Drinks" id="0m5-WH-c7y">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="11Z-7N-0ZJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="11Z-7N-0ZJ">
                             <connections>
                                 <segue destination="AXX-eo-In8" kind="show" id="8Wo-S9-fUH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ShoppingCart" id="S2h-g6-jBA">
+                            <connections>
+                                <segue destination="Rmy-Eg-u1E" kind="show" identifier="showCart" id="iEV-mK-GVx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -266,14 +271,6 @@
                                     <segue destination="Rmy-Eg-u1E" kind="show" identifier="addToCart" id="Rhb-LP-LBS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6L-nw-k56">
-                                <rect key="frame" x="320" y="460" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cart"/>
-                                <connections>
-                                    <segue destination="Rmy-Eg-u1E" kind="show" identifier="showCart" id="Ap9-2s-WQ2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -317,7 +314,7 @@
                                         <rect key="frame" x="0.0" y="322" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Io-ag-rRP" id="oRM-am-2Ny">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxn-wi-PpX">
@@ -1224,6 +1221,7 @@
         <image name="Cocktail" width="35" height="35"/>
         <image name="Dessert" width="35" height="35"/>
         <image name="Main" width="35" height="35"/>
+        <image name="ShoppingCart" width="30" height="30"/>
         <image name="add" width="30" height="30"/>
         <image name="barrafina" width="480" height="480"/>
         <image name="cafeloisl" width="480" height="480"/>
@@ -1231,8 +1229,8 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Afb-nZ-Irq"/>
         <segue reference="vup-zi-KDP"/>
-        <segue reference="4Qn-cG-SOs"/>
         <segue reference="Rhb-LP-LBS"/>
     </inferredMetricsTieBreakers>
 </document>
