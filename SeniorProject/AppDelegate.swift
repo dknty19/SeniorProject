@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.white
         UITabBar.appearance().backgroundColor = UIColor.black
         
+        NSTimeZone.default = TimeZone(abbreviation: "UTC")!
+        
         return true
     }
     

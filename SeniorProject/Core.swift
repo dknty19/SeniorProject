@@ -9,4 +9,5 @@
 import Foundation
 
 
-var cart = [Bill]()
+var superCart = [Cart]()
+var tableNumber = "1"

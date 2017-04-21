@@ -20,16 +20,15 @@ class DrinkDetailViewController: UIViewController {
     var defaultQuantity = 1
 //    var total = 0
     
-    var bill:Bill!
-    var bills = [Bill]()
+    var cart:Cart!
+    var carts = [Cart]()
     var drink:Drink!
+    var food:Food!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let imageURL = URL.init(string: drink.imageURL) {
-            drinkImageView.downloadedFrom(url: imageURL)
-        }
+        
         
         //background color in table view
 //        tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
@@ -37,6 +36,9 @@ class DrinkDetailViewController: UIViewController {
         //title nav bar
         title = drink.name
         
+        if let imageURL = URL.init(string: drink.imageURL) {
+            drinkImageView.downloadedFrom(url: imageURL)
+        }
         descriptionTextField.text = drink.type
         increLabel.text = String(defaultQuantity)
         priceLabel.text = String(drink.price)
@@ -103,27 +105,27 @@ class DrinkDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationController = segue.destination as! CartTableViewController
-        if segue.identifier == "addToCart" {
+        if segue.identifier == "addDrinkToCart" {
             
+            let table = tableNumber
             let quantity = Int(increLabel.text!)!
             let price = Int(totalTextField.text!)!
             let name = drink.name
+            let date = String(describing: Date())
             
-            bill = Bill(name: name, quantity: quantity, price: price)
-            cart.append(bill)
+            cart = Cart(table: table, name: name, quantity: quantity, price: price, date: date)
+            superCart.append(cart)
             
             
             destinationController.drinkCart = drink
-            destinationController.bill = bill
+            destinationController.cart = cart
             //destinationController.bills = bills
-            
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            appDelegate.switchToCartTab()
         }
         
         if segue.identifier == "showCart" {
             destinationController.drinkCart = drink
-            destinationController.bill = bill
+            destinationController.cart = cart
+            destinationController.foodCart = food
             //destinationController.bills = bills
         }
     }
