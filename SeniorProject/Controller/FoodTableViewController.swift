@@ -76,13 +76,20 @@ class FoodTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFoodDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationController = segue.destination as! FoodDetailTableViewController
+                let naviController = segue.destination as! UINavigationController
+                let destinationController = naviController.topViewController as! FoodDetailTableViewController
                 destinationController.food = foods[indexPath.row]
                 destinationController.hidesBottomBarWhenPushed = false
             }
         }
     }
+    //MARK: -Action
+    
+    @IBAction func backToFoodTableViewController(_ segue: UIStoryboardSegue) {}
 }
+
+
+
     // extension for download image from url
 extension UIImageView {
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {

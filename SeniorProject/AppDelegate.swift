@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.white
         UITabBar.appearance().backgroundColor = UIColor.black
         
+        NSTimeZone.default = TimeZone(abbreviation: "UTC")!
+        
         return true
     }
     
@@ -59,6 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func switchToCartTab() {
+        let tabBarController = self.window!.rootViewController as! UITabBarController
+        tabBarController.selectedIndex = 3
+        
     }
 }
 

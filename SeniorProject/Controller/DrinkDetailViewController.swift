@@ -8,47 +8,46 @@
 
 import UIKit
 
-class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DrinkDetailViewController: UIViewController {
     
     @IBOutlet var drinkImageView:UIImageView!
-    @IBOutlet var tableView:UITableView!
+    @IBOutlet var totalTextField:UITextField!
+    @IBOutlet var descriptionTextField:UITextField!
+    @IBOutlet var increLabel:UILabel!
+    @IBOutlet var priceLabel:UILabel!
+    @IBOutlet var nameDrinkLabel:UILabel!
     
+    var defaultQuantity = 1
+//    var total = 0
+    
+    var cart:Cart!
+    var carts = [Cart]()
     var drink:Drink!
-
+    var food:Food!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        //background color in table view
+//        tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
+        
+        //title nav bar
+        title = drink.name
         
         if let imageURL = URL.init(string: drink.imageURL) {
             drinkImageView.downloadedFrom(url: imageURL)
         }
-        
-        //background color in table view
-        tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
-        
-        //title nav bar
-        title = drink.name
+        descriptionTextField.text = drink.type
+        increLabel.text = String(defaultQuantity)
+        priceLabel.text = String(drink.price)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.hidesBarsOnSwipe = true
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DrinkDetailTableViewCell
-        
-        cell.descriptionTextField.text = drink.type
-        cell.labelNameDrink.text = drink.name
-        cell.labelPrice.text = String(drink.price)
-        cell.backgroundColor = UIColor(red: 255.0/255.0, green: 128.0/255, blue: 0/255, alpha: 0.8)
-        
-        return cell
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,9 +73,9 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
 //        tableView.reloadData()
 //    }
     
-    /*
-    // MARK: - Navigation
     
+    // MARK: - Navigation
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Get the new view controller using segue.destinationViewController.
@@ -91,7 +90,46 @@ class DrinkDetailViewController: UIViewController, UITableViewDataSource, UITabl
 //            destinationController.restaurant = restaurant
 //        }
 //    }
-    func add(_ notification: Notification) {
+    
+    @IBAction func submitOrder(_ sender: UIButton!) {
         
+    }
+    
+    @IBAction func addDrinkToLabel(_ sender: UIButton) {
+        defaultQuantity += 1
+        increLabel.text = "\(defaultQuantity)"
+        
+        nameDrinkLabel.text = drink.name
+        totalTextField.text = String(defaultQuantity * drink.price)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationController = segue.destination as! CartTableViewController
+        if segue.identifier == "addDrinkToCart" {
+            
+            let uid = "a"
+            let table = tableNumber
+            let name = drink.name
+            let quantity = Int(increLabel.text!)!
+            let price = Int(totalTextField.text!)!
+            let image = drink.imageURL
+            let isPay = true
+            let date = String(describing: Date())
+            
+            cart = Cart(uid:uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay: isPay, date: date)
+            superCart.append(cart)
+            
+            
+            destinationController.drinkCart = drink
+            destinationController.cart = cart
+            //destinationController.bills = bills
+        }
+        
+        if segue.identifier == "showCart" {
+            destinationController.drinkCart = drink
+            destinationController.cart = cart
+            destinationController.foodCart = food
+            //destinationController.bills = bills
+        }
     }
 }

@@ -11,8 +11,7 @@ import UIKit
 class WelcomeTableViewController: UITableViewController {
 
     @IBOutlet var menuButton:UIBarButtonItem!
-    @IBOutlet var scanButton:UIButton!
-    @IBOutlet var loginButton:UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,18 +48,6 @@ class WelcomeTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
-    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -120,11 +107,12 @@ class WelcomeTableViewController: UITableViewController {
 //    @IBAction func userLoginIntoRestaurant(sender: AnyObject) {
 //        
 //    }
-    
+        
     // unwind segue
     @IBAction func closeLogin(_ segue: UIStoryboardSegue) {
     }
     
     @IBAction func closeRegister(_ segue: UIStoryboardSegue) {
     }
+    
 }

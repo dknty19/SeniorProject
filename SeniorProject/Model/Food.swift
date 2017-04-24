@@ -15,14 +15,16 @@ struct Food {
     var name:String
     var imageURL:String
     var price:Int
+//    var description:String
     let ref:FIRDatabaseReference!
 //    var quantity:Int?
     
-    init(key:String = "", name:String, imageURL:String, price:Int) {
+    init(key:String = "", name:String, imageURL:String, price:Int, description:String) {
         self.key = key
         self.name = name
         self.imageURL = imageURL
         self.price = price
+//        self.description = description
 //        self.quantity = 0 as Int
         self.ref = nil
     }
@@ -33,6 +35,7 @@ struct Food {
         name = snapshotValue["name"] as! String
         imageURL = snapshotValue["imageURL"] as! String
         price = snapshotValue["price"] as! Int
+//        description = snapshotValue["description"] as! String
         ref = snapshot.ref
     }
 }
