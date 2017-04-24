@@ -17,11 +17,20 @@ class CheckOutViewController: UIViewController {
     @IBOutlet var totalTextField:UITextField!
     
     var checkOut = [Cart]()
+    var total = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        for i in 0...checkOut.count - 1 {
+            total += checkOut[i].price * checkOut[i].quantity
+        }
+        
+        tableTextField.text = tableNumber
+        totalTextField.text = String(total)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,14 +51,17 @@ class CheckOutViewController: UIViewController {
     
     @IBAction func checkOut(sender: UIButton!) {
         for i in 0...(checkOut.count - 1) {
+            let uid = checkOut[i].uid
             let table = checkOut[i].table
             let name = checkOut[i].name
             let price = checkOut[i].price
+            let isPay = checkOut[i].isPay
+            let image = checkOut[i].image
             let quantity = checkOut[i].quantity
             let date = checkOut[i].date
             
             // add data
-            let cartItem = Cart(table: table, name: name, quantity: quantity, price: price, date: date)
+            let cartItem = Cart(uid: uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay:isPay, date: date)
             
             //add note child
             let cartItemRef = self.ref.child(date)

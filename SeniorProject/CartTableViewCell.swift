@@ -13,6 +13,7 @@ class CartTableViewCell: UITableViewCell {
     @IBOutlet var nameItemLabel:UILabel!
     @IBOutlet var quantityItemLabel:UILabel!
     @IBOutlet var totalPriceLabel:UILabel!
+    @IBOutlet var photoImageView:UIImageView!
     @IBOutlet var total:UILabel!
 
     override func awakeFromNib() {

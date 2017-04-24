@@ -10,8 +10,8 @@ import UIKit
 
 class CartTableViewController: UITableViewController {
     
-    var drinkCart:Drink!
-    var foodCart:Food!
+    var drinkCart:Drink?
+    var foodCart:Food?
 //    var bills = [Bill]()
     var cart:Cart!
 
@@ -38,9 +38,13 @@ class CartTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CartTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CartTableViewCell
         
             let cartItem = superCart[indexPath.row]
+        
+            if  let imageURL = URL.init(string: cartItem.image) {
+                cell.photoImageView.downloadedFrom(url: imageURL)
+            }
             cell.nameItemLabel.text = cartItem.name
             cell.quantityItemLabel.text = String(cartItem.quantity)
             cell.totalPriceLabel.text = String(cartItem.price)
@@ -93,4 +97,6 @@ class CartTableViewController: UITableViewController {
             destinationViewController.checkOut = superCart
         }
     }
+    
+    @IBAction func cancelCheckOut(_ segue: UIStoryboardSegue) {}
 }

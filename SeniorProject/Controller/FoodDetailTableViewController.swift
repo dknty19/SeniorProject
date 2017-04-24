@@ -56,14 +56,18 @@ class FoodDetailTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addFoodToCart" {
             let destinationController = segue.destination as! CartTableViewController
+            totalLabel.text = "1"
             
+            let uid = "a"
             let table = tableNumber
+            let name = food.name
             let quantity = Int(increLabel.text!)!
             let price = Int(totalLabel.text!)!
-            let name = food.name
+            let image = food.imageURL
+            let isPay = true
             let date = String(describing: Date())
             
-            cart = Cart(table: table, name: name, quantity: quantity, price: price, date: date)
+            cart = Cart(uid:uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay:isPay, date: date)
             superCart.append(cart)
             
             
