@@ -10,13 +10,16 @@ import UIKit
 
 class CartTableViewController: UITableViewController {
     
-    var drinkCart:Drink?
-    var foodCart:Food?
+//    var drinkCart:Drink?
+//    var foodCart:Food?
 //    var bills = [Bill]()
     var cart:Cart!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //detele footer view
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +54,7 @@ class CartTableViewController: UITableViewController {
         
         return cell
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -60,17 +63,17 @@ class CartTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            superCart.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
-    */
+ 
 
     /*
     // Override to support rearranging the table view.
@@ -93,7 +96,7 @@ class CartTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "checkOut" {
             let naviController = segue.destination as! UINavigationController
-            let destinationViewController = naviController.topViewController as! CheckOutViewController
+            let destinationViewController = naviController.topViewController as! CheckOutTableViewController
             destinationViewController.checkOut = superCart
         }
     }
