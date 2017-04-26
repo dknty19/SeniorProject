@@ -15,6 +15,8 @@ class FoodTableViewController: UITableViewController {
     
     var foods: [Food] = []
     let ref = FIRDatabase.database().reference(withPath: "Restaurant/Foods")
+//    var user:User!
+//    let usersRef = FIRDatabase.database().reference(withPath: "Restaurant/Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,16 @@ class FoodTableViewController: UITableViewController {
         //remove the title of the back button
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
     
+        //user
+//        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+//            guard let user = user else { return }
+//            self.user! = User(authData: user)
+//            let currentUserRef = self.usersRef.child(self.user.uid)
+//            currentUserRef.setValue(self.user.email)
+//            currentUserRef.onDisconnectRemoveValue()
+//        }
+
+        //food
         ref.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
             var newFoods: [Food] = []
             
@@ -62,7 +74,7 @@ class FoodTableViewController: UITableViewController {
         
         let foodItem = foods[indexPath.row]
         cell.nameFoodLabel.text = foodItem.name
-        cell.priceFoodLabel.text = String(foodItem.price)
+        cell.priceFoodLabel.text = String(foodItem.price) + "$"
         if let imageURL = URL.init(string: foodItem.imageURL) {
             cell.foodImageView.downloadedFrom(url: imageURL)
         }

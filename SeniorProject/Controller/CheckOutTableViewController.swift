@@ -23,10 +23,15 @@ class CheckOutTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0...checkOut.count - 1 {
-            total += checkOut[i].price * checkOut[i].quantity
+        if checkOut.count == 0 {
+            totalTextField.text = String(total)
+        }else {
+            for i in 0...checkOut.count - 1 {
+                total += checkOut[i].price
+            }
+            totalTextField.text = String(total)
         }
-            totalTextField.text = String(total) + "$"
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,25 +106,34 @@ class CheckOutTableViewController: UITableViewController {
     */
     
     @IBAction func checkOut(sender: UIButton!) {
-        for i in 0...(checkOut.count - 1) {
-            let uid = checkOut[i].uid
-            let table = checkOut[i].table
-            let name = checkOut[i].name
-            let price = checkOut[i].price
-            let isPay = checkOut[i].isPay
-            let image = checkOut[i].image
-            let quantity = checkOut[i].quantity
-            let date = checkOut[i].date
-            
-            // add data
-            let cartItem = Cart(uid: uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay:isPay, date: date)
-            
-            //add note child
-            let cartItemRef = self.ref.child(date)
-            
-            //
-            cartItemRef.setValue(cartItem.toAnyObject())
+        if checkOut.count == 0 {
+            let alertController = UIAlertController(title: "Warning!", message: "There is nothing to purchase. Please come back and choose one item.", preferredStyle: .alert)
+            let defautlAction = UIAlertAction(title: "OK", style: .default, handler: nil
+//                { _ in                self.dismiss(animated: true, completion: nil)}
+            )
+            alertController.addAction(defautlAction)
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            for i in 0...(self.checkOut.count - 1) {
+                let uid = self.checkOut[i].uid
+                let table = self.checkOut[i].table
+                let name = self.checkOut[i].name
+                let price = self.checkOut[i].price
+                let isPay = self.checkOut[i].isPay
+                let image = self.checkOut[i].image
+                let quantity = self.checkOut[i].quantity
+                let date = self.checkOut[i].date
+                
+                // add data
+                let cartItem = Cart(uid: uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay:isPay, date: date)
+                
+                //add note child
+                let cartItemRef = self.ref.child(date)
+                
+                //
+                cartItemRef.setValue(cartItem.toAnyObject())
+            }
+            superCart.removeAll()
         }
-        //            performSegue(withIdentifier: "addFinish", sender: self)
     }
 }

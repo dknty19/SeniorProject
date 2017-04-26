@@ -60,6 +60,7 @@ class LoginViewController: UIViewController {
                 if error == nil {
                     
                     //Go to the HomeViewController if the login is sucessful
+                    print(user!.uid)
                     self.performSegue(withIdentifier: "login", sender: self)
 //                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
 //                    self.present(vc!, animated: true, completion: nil)

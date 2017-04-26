@@ -1,5 +1,5 @@
 //
-//  FoodDetailTableViewCell.swift
+//  DessertTableViewCell.swift
 //  Test
 //
 //  Created by Vinh (Vern) H. NGUYEN on 4/3/17.
@@ -8,8 +8,12 @@
 
 import UIKit
 
-class FoodDetailTableViewCell: UITableViewCell {
+class DessertTableViewCell: UITableViewCell {
 
+    @IBOutlet var desertImageView:UIImageView!
+    @IBOutlet var nameDesertLabel:UILabel!
+    @IBOutlet var priceDesertLabel:UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

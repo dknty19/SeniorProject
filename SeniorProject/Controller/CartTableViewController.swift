@@ -50,7 +50,7 @@ class CartTableViewController: UITableViewController {
             }
             cell.nameItemLabel.text = cartItem.name
             cell.quantityItemLabel.text = String(cartItem.quantity)
-            cell.totalPriceLabel.text = String(cartItem.price)
+            cell.totalPriceLabel.text = String(cartItem.price) + "$"
         
         return cell
     }
