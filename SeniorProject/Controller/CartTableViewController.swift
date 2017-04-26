@@ -10,16 +10,29 @@ import UIKit
 
 class CartTableViewController: UITableViewController {
     
-//    var drinkCart:Drink?
-//    var foodCart:Food?
-//    var bills = [Bill]()
+    @IBOutlet var totalTextField:UITextField!
+    @IBOutlet var tableTextField:UITextField!
+    
     var cart:Cart!
+    var total = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //detele footer view
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        //show total price
+        if superCart.count == 0 {
+            totalTextField.text = String(total)
+        }else {
+            for i in 0...superCart.count - 1 {
+                total += superCart[i].price
+            }
+            totalTextField.text = String(total)
+        }
+        
+        tableTextField.text = tableNumber
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +58,7 @@ class CartTableViewController: UITableViewController {
         
             let cartItem = superCart[indexPath.row]
         
-            if  let imageURL = URL.init(string: cartItem.image) {
+            if  let imageURL = URL.init(string: cartItem.image!) {
                 cell.photoImageView.downloadedFrom(url: imageURL)
             }
             cell.nameItemLabel.text = cartItem.name
@@ -95,11 +108,12 @@ class CartTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "checkOut" {
-            let naviController = segue.destination as! UINavigationController
-            let destinationViewController = naviController.topViewController as! CheckOutTableViewController
-            destinationViewController.checkOut = superCart
+            let destinationVIewController = segue.destination as! CheckOutViewController
+//            let destinationViewController = naviController.topViewController as! CheckOutViewController
+            destinationVIewController.checkOut = superCart
         }
     }
     
-    @IBAction func cancelCheckOut(_ segue: UIStoryboardSegue) {}
+    @IBAction func cancelCheckOut(_ segue: UIStoryboardSegue) {
+    }
 }

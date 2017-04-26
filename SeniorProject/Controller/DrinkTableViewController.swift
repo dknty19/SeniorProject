@@ -152,7 +152,7 @@ class DrinkTableViewController: UITableViewController {
 //                let naviController = segue.destination as! UINavigationController
                 let destinationController = segue.destination as! DrinkDetailViewController
                 destinationController.drink = drinks[indexPath.row]
-                destinationController.hidesBottomBarWhenPushed = true
+//                destinationController.hidesBottomBarWhenPushed = true
             }
         }
     }

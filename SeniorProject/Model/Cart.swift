@@ -13,18 +13,20 @@ import FirebaseDatabase
 struct Cart {
     var key:String
     var uid:String
+    var id:String?
     var table:String
     var name:String
     var quantity:Int
     var price:Int
-    var image:String
-    var isPay:Bool
+    var image:String?
+    var isPay:Bool?
     let ref:FIRDatabaseReference!
     var date:String
     
-    init(key:String = "", uid:String, table:String, name:String, quantity:Int, price:Int, image:String, isPay:Bool, date:String) {
+    init(key:String = "", uid:String, id:String?, table:String, name:String, quantity:Int, price:Int, image:String?, isPay:Bool?, date:String) {
         self.key = key
         self.uid = uid
+        self.id = id
         self.table = table
         self.name = name
         self.quantity = quantity
@@ -39,12 +41,13 @@ struct Cart {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
         uid = snapshotValue["uid"] as! String
+        id = snapshotValue["id"] as? String
         table = snapshotValue["table"] as! String
         name = snapshotValue["name"] as! String
         quantity = snapshotValue["quantity"] as! Int
         price = snapshotValue["price"] as! Int
-        image = snapshotValue["image"] as! String
-        isPay = snapshotValue["isPay"] as! Bool
+        image = snapshotValue["image"] as? String
+        isPay = snapshotValue["isPay"] as? Bool
         date = snapshotValue["date"] as! String
         ref = snapshot.ref
     }
@@ -53,11 +56,12 @@ struct Cart {
     func toAnyObject() -> Any {
         return [
             "uid":uid,
+            "id":id!,
             "table": table,
             "name": name,
             "quantity": quantity,
             "price": price,
-            "isPay":isPay,
+            "isPay":isPay!,
             "date": date
         ]
     }

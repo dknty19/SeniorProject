@@ -67,6 +67,7 @@ class FoodDetailTableViewController: UIViewController {
 //            totalLabel.text = "1"
             
             let uid = externalUid!
+            let id = ""
             let table = tableNumber
             let name = food.name
             let quantity = Int(increLabel.text!)!
@@ -75,7 +76,7 @@ class FoodDetailTableViewController: UIViewController {
             let isPay = true
             let date = String(describing: Date())
             
-            cart = Cart(uid: uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay: isPay, date: date)
+            cart = Cart(uid: uid, id: id, table: table, name: name, quantity: quantity, price: price, image: image, isPay: isPay, date: date)
             superCart.append(cart)
             
             

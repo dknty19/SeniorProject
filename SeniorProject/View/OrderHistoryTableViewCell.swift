@@ -1,5 +1,5 @@
 //
-//  CheckOutTableViewCell.swift
+//  OrderHistoryTableViewCell.swift
 //  SeniorProject
 //
 //  Created by Vinh (Vern) H. NGUYEN on 4/24/17.
@@ -8,10 +8,11 @@
 
 import UIKit
 
-class CheckOutTableViewCell: UITableViewCell {
+class OrderHistoryTableViewCell: UITableViewCell {
 
     @IBOutlet var nameTextField:UITextField!
-    @IBOutlet var priceTextField:UITextField!
+    @IBOutlet var totalPriceTextField:UITextField!
+    @IBOutlet var idBillTextField:UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -91,7 +91,7 @@ class FoodTableViewController: UITableViewController {
                 let naviController = segue.destination as! UINavigationController
                 let destinationController = naviController.topViewController as! FoodDetailTableViewController
                 destinationController.food = foods[indexPath.row]
-                destinationController.hidesBottomBarWhenPushed = false
+//                destinationController.hidesBottomBarWhenPushed = false
             }
         }
     }
