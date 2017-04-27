@@ -10,8 +10,9 @@ import UIKit
 import FirebaseDatabase
 
 class CheckOutViewController: UIViewController {
-
-    let ref = FIRDatabase.database().reference(withPath: "Restaurant/Bills/Tables "+tableNumber)
+    
+    let ref = FIRDatabase.database().reference(withPath: "Restaurant/Bills")
+//    let refID = FIRDatabase.database().reference()
     
 //    @IBOutlet var tableTextField:UITextField!
     @IBOutlet var totalTextField:UITextField!
@@ -60,9 +61,12 @@ class CheckOutViewController: UIViewController {
         }else{
             let alerController1 = UIAlertController(title:"Payment", message: "Your meal will be available soon! Have a good meal!", preferredStyle: .alert)
             let defautlAction1 = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                
+                let id = self.ref.childByAutoId().key
+                
                 for i in 0...(self.checkOut.count - 1) {
                     let uid = self.checkOut[i].uid
-                    let id = self.checkOut[i].uid
+                    let id = id
                     let table = self.checkOut[i].table
                     let name = self.checkOut[i].name
                     let price = self.checkOut[i].price
@@ -75,7 +79,7 @@ class CheckOutViewController: UIViewController {
                     let cartItem = Cart(uid: uid, id: id, table: table, name: name, quantity: quantity, price: price, image: image, isPay:isPay, date: date)
                     
                     //add note child
-                    let cartItemRef = self.ref.child(date)
+                    let cartItemRef = self.ref.child(id)
                     
                     //
                     cartItemRef.setValue(cartItem.toAnyObject())

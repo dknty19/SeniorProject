@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 struct Cart {
     var key:String
-    var uid:String
+//    var uid:String
     var id:String?
     var table:String
     var name:String
