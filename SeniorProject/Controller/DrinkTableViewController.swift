@@ -66,7 +66,7 @@ class DrinkTableViewController: UITableViewController {
         
         let drinkItem = drinks[indexPath.row]
         cell.nameDrinkLabel.text = drinkItem.name
-        cell.priceDrinkLabel.text = String(drinkItem.price)
+        cell.priceDrinkLabel.text = String(drinkItem.price) + "$"
         cell.typeDrinkLabel.text = drinkItem.type
         if let imageURL = URL.init(string: drinkItem.imageURL) {
             cell.drinkImageView.downloadedFrom(url: imageURL)
@@ -149,9 +149,10 @@ class DrinkTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDrinkDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
+//                let naviController = segue.destination as! UINavigationController
                 let destinationController = segue.destination as! DrinkDetailViewController
                 destinationController.drink = drinks[indexPath.row]
-                destinationController.hidesBottomBarWhenPushed = false
+//                destinationController.hidesBottomBarWhenPushed = true
             }
         }
     }
@@ -159,4 +160,6 @@ class DrinkTableViewController: UITableViewController {
     @IBAction func unwindToHomeScreen(_ segue: UIStoryboardSegue) {}
     
     @IBAction func cancelAddDrink(_ segue: UIStoryboardSegue) {}
+    
+    @IBAction func cancelDetailDrink(_ segue: UIStoryboardSegue) {}
 }

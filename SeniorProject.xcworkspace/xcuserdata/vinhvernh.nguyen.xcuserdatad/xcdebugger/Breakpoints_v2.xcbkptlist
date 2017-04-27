@@ -9,44 +9,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeniorProject/Controller/FoodTableViewController.swift"
-            timestampString = "513664845.801538"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "tableView(_:heightForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SeniorProject/Controller/FoodTableViewController.swift"
-            timestampString = "513664845.801538"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SeniorProject/Controller/DrinkDetailViewController.swift"
-            timestampString = "514460334.799731"
+            timestampString = "514872174.303723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137">
+            startingLineNumber = "135"
+            endingLineNumber = "135">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,6 +31,100 @@
             endingLineNumber = "12"
             landmarkName = "ScanViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeniorProject/Controller/OrderHistoryTableViewController.swift"
+            timestampString = "514891909.62864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "OrderHistoryTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SeniorProject.OrderHistoryTableViewController.orderHistory.setter : Swift.Array&lt;SeniorProject.Cart&gt;"
+                  moduleName = "SeniorProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vinhvernh.nguyen/Downloads/SeniorProject-master/SeniorProject/Controller/OrderHistoryTableViewController.swift"
+                  timestampString = "514887339.086744"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SeniorProject.OrderHistoryTableViewController.init (style : __C.UITableViewStyle) -&gt; SeniorProject.OrderHistoryTableViewController"
+                  moduleName = "SeniorProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vinhvernh.nguyen/Downloads/SeniorProject-master/SeniorProject/Controller/OrderHistoryTableViewController.swift"
+                  timestampString = "514887339.089621"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SeniorProject.OrderHistoryTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; SeniorProject.OrderHistoryTableViewController"
+                  moduleName = "SeniorProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vinhvernh.nguyen/Downloads/SeniorProject-master/SeniorProject/Controller/OrderHistoryTableViewController.swift"
+                  timestampString = "514887339.0922"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SeniorProject.OrderHistoryTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SeniorProject.OrderHistoryTableViewController&gt;"
+                  moduleName = "SeniorProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vinhvernh.nguyen/Downloads/SeniorProject-master/SeniorProject/Controller/OrderHistoryTableViewController.swift"
+                  timestampString = "514887339.094687"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeniorProject/Controller/OrderHistoryTableViewController.swift"
+            timestampString = "514892726.817733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

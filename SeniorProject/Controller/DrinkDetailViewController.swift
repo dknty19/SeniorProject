@@ -15,7 +15,7 @@ class DrinkDetailViewController: UIViewController {
     @IBOutlet var descriptionTextField:UITextField!
     @IBOutlet var increLabel:UILabel!
     @IBOutlet var priceLabel:UILabel!
-    @IBOutlet var nameDrinkLabel:UILabel!
+//    @IBOutlet var nameDrinkLabel:UILabel!
     
     var defaultQuantity = 1
 //    var total = 0
@@ -42,12 +42,14 @@ class DrinkDetailViewController: UIViewController {
         descriptionTextField.text = drink.type
         increLabel.text = String(defaultQuantity)
         priceLabel.text = String(drink.price)
+        totalTextField.text = String(drink.price)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBottomBarWhenPushed = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,15 +93,10 @@ class DrinkDetailViewController: UIViewController {
 //        }
 //    }
     
-    @IBAction func submitOrder(_ sender: UIButton!) {
-        
-    }
-    
     @IBAction func addDrinkToLabel(_ sender: UIButton) {
         defaultQuantity += 1
         increLabel.text = "\(defaultQuantity)"
         
-        nameDrinkLabel.text = drink.name
         totalTextField.text = String(defaultQuantity * drink.price)
     }
     
@@ -107,28 +104,29 @@ class DrinkDetailViewController: UIViewController {
         let destinationController = segue.destination as! CartTableViewController
         if segue.identifier == "addDrinkToCart" {
             
-            let uid = "a"
+            let uid = externalUid!
+            let id = ""
             let table = tableNumber
             let name = drink.name
             let quantity = Int(increLabel.text!)!
             let price = Int(totalTextField.text!)!
             let image = drink.imageURL
-            let isPay = true
+            let isPay = false
             let date = String(describing: Date())
             
-            cart = Cart(uid:uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay: isPay, date: date)
+            cart = Cart(uid: uid, id: id, table: table, name: name, quantity: quantity, price: price, image: image, isPay: isPay, date: date)
             superCart.append(cart)
             
             
-            destinationController.drinkCart = drink
             destinationController.cart = cart
+//            destinationController.drinkCart = drink
             //destinationController.bills = bills
         }
         
         if segue.identifier == "showCart" {
-            destinationController.drinkCart = drink
             destinationController.cart = cart
-            destinationController.foodCart = food
+//            destinationController.drinkCart = drink
+//            destinationController.foodCart = food
             //destinationController.bills = bills
         }
     }

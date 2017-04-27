@@ -62,11 +62,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    func switchToCartTab() {
-        let tabBarController = self.window!.rootViewController as! UITabBarController
-        tabBarController.selectedIndex = 3
-        
-    }
 }
 

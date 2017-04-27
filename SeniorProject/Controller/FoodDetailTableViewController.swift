@@ -38,7 +38,15 @@ class FoodDetailTableViewController: UIViewController {
             foodImageView.downloadedFrom(url: imageURL)
         }
         descriptionTextField.text = food.name
-        //        cell.descriptionTextField.text = String(food.price)
+        priceLabel.text = String(food.price)
+        increLabel.text = String(defaultQuantity)
+        totalLabel.text = String(food.price)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.hidesBarsOnSwipe = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,9 +64,10 @@ class FoodDetailTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addFoodToCart" {
             let destinationController = segue.destination as! CartTableViewController
-            totalLabel.text = "1"
+//            totalLabel.text = "1"
             
-            let uid = "a"
+            let uid = externalUid!
+            let id = ""
             let table = tableNumber
             let name = food.name
             let quantity = Int(increLabel.text!)!
@@ -67,13 +76,13 @@ class FoodDetailTableViewController: UIViewController {
             let isPay = true
             let date = String(describing: Date())
             
-            cart = Cart(uid:uid, table: table, name: name, quantity: quantity, price: price, image: image, isPay:isPay, date: date)
+            cart = Cart(uid: uid, id: id, table: table, name: name, quantity: quantity, price: price, image: image, isPay: isPay, date: date)
             superCart.append(cart)
             
             
-            destinationController.drinkCart = drink
-            destinationController.foodCart = food
             destinationController.cart = cart
+//            destinationController.drinkCart = drink
+//            destinationController.foodCart = food
             //destinationController.bills = bills
         }
     }
