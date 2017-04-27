@@ -11,29 +11,48 @@ import FirebaseDatabase
 
 class OrderHistoryTableViewController: UITableViewController {
 
-    var orderHistory: [Cart] = []
-    var orderHistoryID: [Cart] = []
-    let ref = FIRDatabase.database().reference(withPath: "Restaurant/Bills/Tables 1")
+    var orderHistory: [Bill] = []
+    var orderHistoryID: [Bill] = []
+    var cart: [Cart] = []
+    var total = 0
+    let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills")
+    let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref.queryOrdered(byChild: "id").observe(.value, with: { snapshot in
-            var newOrderHistory: [Cart] = []
+        refBill.queryOrdered(byChild: "id").observe(.value, with: { snapshot in
+            var newOrderHistory: [Bill] = []
             
             for item in snapshot.children {
-                let cart = Cart(snapshot: item as! FIRDataSnapshot)
-                newOrderHistory.append(cart)
+                let bill = Bill(snapshot: item as! FIRDataSnapshot)
+                newOrderHistory.append(bill)
             }
             self.orderHistory = newOrderHistory
 
             for i in 0...self.orderHistory.count - 1 {
-                if self.orderHistory[i].uid == externalUid {
+                if self.orderHistory[i].uid == externalUid! {
                     self.orderHistoryID.append(self.orderHistory[i])
 //                    print(self.orderHistoryID.count)
                 }
             }
             self.tableView.reloadData()
         })
+        
+        refCart.queryOrdered(byChild: "id").queryEqual(toValue: "Kii1occ1TsZny8yvdMK").observe(.value, with: { snapshot in
+            var newCart: [Cart] = []
+            
+            for item in snapshot.children {
+                let cart = Cart(snapshot: item as! FIRDataSnapshot)
+                newCart.append(cart)
+            }
+            self.cart = newCart
+            
+            for i in 0...self.cart.count - 1 {
+                self.total += self.cart[i].price * self.cart[i].quantity
+            }
+            self.tableView.reloadData()
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,9 +76,9 @@ class OrderHistoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OrderHistoryTableViewCell
 
         let orderHistoryItem = orderHistoryID[indexPath.row]
-        cell.idBillTextField.text = orderHistoryItem.id!
-        cell.nameTextField.text = orderHistoryItem.name
-        cell.totalPriceTextField.text = String(orderHistoryItem.quantity * orderHistoryItem.price)
+        cell.idBillTextField.text = orderHistoryItem.id
+        cell.nameTextField.text = String(orderHistoryID.count)
+        cell.totalPriceTextField.text = String(total)
         return cell
     }
 

@@ -15,6 +15,7 @@
 		1D5875561E974A9400A686DE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5875551E974A9400A686DE /* SWRevealViewController.m */; };
 		1D8D6E481EADDAD0005B8F99 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D6E471EADDAD0005B8F99 /* CheckOutViewController.swift */; };
 		1D8D6E4A1EADDB43005B8F99 /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D6E491EADDB43005B8F99 /* OrderHistoryTableViewCell.swift */; };
+		1D9985A91EB1AC7400655D06 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9985A81EB1AC7300655D06 /* Bill.swift */; };
 		1DC557C21E9772360098D691 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC557C11E9772360098D691 /* RegisterViewController.swift */; };
 		1DC655051EB089FB0024F696 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC655041EB089FB0024F696 /* OrderHistoryTableViewController.swift */; };
 		1DD479691EB03BA100410AE2 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD479681EB03BA100410AE2 /* LogoutViewController.swift */; };
@@ -71,6 +72,7 @@
 		1D8D6E471EADDAD0005B8F99 /* CheckOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckOutViewController.swift; path = Controller/CheckOutViewController.swift; sourceTree = "<group>"; };
 		1D8D6E491EADDB43005B8F99 /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderHistoryTableViewCell.swift; path = View/OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		1D94E5ED1E9DCA7800E2C2AB /* SeniorProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeniorProject.entitlements; sourceTree = "<group>"; };
+		1D9985A81EB1AC7300655D06 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bill.swift; path = Model/Bill.swift; sourceTree = "<group>"; };
 		1DC557C11E9772360098D691 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controller/RegisterViewController.swift; sourceTree = "<group>"; };
 		1DC655041EB089FB0024F696 /* OrderHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderHistoryTableViewController.swift; path = Controller/OrderHistoryTableViewController.swift; sourceTree = "<group>"; };
 		1DD479681EB03BA100410AE2 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoutViewController.swift; path = Controller/LogoutViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				5746B5D61E92065000230EF4 /* Drink.swift */,
 				1D5439E11EA0C37B00470823 /* Cart.swift */,
 				1DF900011EAF4D01001DF60E /* Dessert.swift */,
+				1D9985A81EB1AC7300655D06 /* Bill.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				57D654381E88F36D00B9458F /* LoginViewController.swift in Sources */,
 				1DD479691EB03BA100410AE2 /* LogoutViewController.swift in Sources */,
 				578336AC1E91F09A006E803B /* FoodTableViewCell.swift in Sources */,
+				1D9985A91EB1AC7400655D06 /* Bill.swift in Sources */,
 				5746A3BB1E92383E0062DF0F /* DrinkDetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
