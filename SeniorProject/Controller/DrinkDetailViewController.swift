@@ -104,17 +104,17 @@ class DrinkDetailViewController: UIViewController {
         let destinationController = segue.destination as! CartTableViewController
         if segue.identifier == "addDrinkToCart" {
             
-            let uid = externalUid!
+//            let uid = externalUid!
             let id = ""
-            let table = tableNumber
+//            let table = tableNumber
             let name = drink.name
             let quantity = Int(increLabel.text!)!
             let price = Int(totalTextField.text!)!
             let image = drink.imageURL
-            let isPay = false
+//            let isPay = false
             let date = String(describing: Date())
             
-            cart = Cart(uid: uid, id: id, table: table, name: name, quantity: quantity, price: price, image: image, isPay: isPay, date: date)
+            cart = Cart(id: id, idBill: "", name: name, quantity: quantity, price: price, image: image, date: date)
             superCart.append(cart)
             
             

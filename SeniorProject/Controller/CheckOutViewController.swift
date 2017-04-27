@@ -10,13 +10,15 @@ import UIKit
 import FirebaseDatabase
 
 class CheckOutViewController: UIViewController {
-
-    let ref = FIRDatabase.database().reference(withPath: "Restaurant/Bills/Tables "+tableNumber)
+    
+    let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts/")
+    let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills/")
     
 //    @IBOutlet var tableTextField:UITextField!
     @IBOutlet var totalTextField:UITextField!
 //
     var checkOut = [Cart]()
+    var bill = [Bill]()
     var total = 0
 
     
@@ -60,26 +62,36 @@ class CheckOutViewController: UIViewController {
         }else{
             let alerController1 = UIAlertController(title:"Payment", message: "Your meal will be available soon! Have a good meal!", preferredStyle: .alert)
             let defautlAction1 = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                
+                let idBill = self.refBill.childByAutoId().key
+                
                 for i in 0...(self.checkOut.count - 1) {
-                    let uid = self.checkOut[i].uid
-                    let id = self.checkOut[i].uid
-                    let table = self.checkOut[i].table
+//                    let uid = self.checkOut[i].uid
+                    let id = self.refCart.childByAutoId().key
+//                    let table = self.checkOut[i].table
                     let name = self.checkOut[i].name
                     let price = self.checkOut[i].price
-                    let isPay = self.checkOut[i].isPay
+//                    let isPay = self.checkOut[i].isPay
                     let image = self.checkOut[i].image
                     let quantity = self.checkOut[i].quantity
                     let date = self.checkOut[i].date
                     
                     // add data
-                    let cartItem = Cart(uid: uid, id: id, table: table, name: name, quantity: quantity, price: price, image: image, isPay:isPay, date: date)
+                    let cartItem = Cart(id: id, idBill:idBill, name: name, quantity: quantity, price: price, image: image, date: date)
                     
-                    //add note child
-                    let cartItemRef = self.ref.child(date)
+                    //add note child to cart
+                    let cartItemRef = self.refCart.child(id)
                     
                     //
                     cartItemRef.setValue(cartItem.toAnyObject())
+                    
                 }
+                let billItem = Bill(id: idBill, uid: externalUid!, table: tableNumber, isPay: false)
+                //add note child to bill
+                let billItemRef = self.refBill.child(idBill)
+                billItemRef.setValue(billItem.toAnyObject())
+                
+                //remove supercart after submit cart
                 superCart.removeAll()
             })
             alerController1.addAction(defautlAction1)
