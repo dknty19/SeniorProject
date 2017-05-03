@@ -66,7 +66,7 @@ class DrinkTableViewController: UITableViewController {
         
         let drinkItem = drinks[indexPath.row]
         cell.nameDrinkLabel.text = drinkItem.name
-        cell.priceDrinkLabel.text = String(drinkItem.price) + "$"
+        cell.priceDrinkLabel.text = String(drinkItem.price)
         cell.typeDrinkLabel.text = drinkItem.type
         if let imageURL = URL.init(string: drinkItem.imageURL) {
             cell.drinkImageView.downloadedFrom(url: imageURL)

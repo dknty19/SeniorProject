@@ -32,7 +32,7 @@ class CartTableViewController: UITableViewController {
             totalTextField.text = String(total)
         }
         
-        tableTextField.text = tableNumber
+        tableTextField.text = String(tableNumber)
     }
 
     override func didReceiveMemoryWarning() {
