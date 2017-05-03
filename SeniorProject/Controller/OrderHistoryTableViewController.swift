@@ -13,8 +13,9 @@ class OrderHistoryTableViewController: UITableViewController {
 
     var orderHistory: [Bill] = []
     var orderHistoryID: [Bill] = []
-    var cart: [Cart] = []
-    var total = 0
+    
+    var cart:[Cart] = []
+    
     let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills")
     let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts")
     
@@ -38,7 +39,7 @@ class OrderHistoryTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
         
-        refCart.queryOrdered(byChild: "id").queryEqual(toValue: "Kii1occ1TsZny8yvdMK").observe(.value, with: { snapshot in
+        refCart.queryOrdered(byChild: "idBill").queryEqual(toValue: "Kiio82ehXA6O2UeN5IO").observe(.value, with: { snapshot in
             var newCart: [Cart] = []
             
             for item in snapshot.children {
@@ -46,13 +47,8 @@ class OrderHistoryTableViewController: UITableViewController {
                 newCart.append(cart)
             }
             self.cart = newCart
-            
-            for i in 0...self.cart.count - 1 {
-                self.total += self.cart[i].price * self.cart[i].quantity
-            }
             self.tableView.reloadData()
         })
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,8 +73,8 @@ class OrderHistoryTableViewController: UITableViewController {
 
         let orderHistoryItem = orderHistoryID[indexPath.row]
         cell.idBillTextField.text = orderHistoryItem.id
-        cell.nameTextField.text = String(orderHistoryID.count)
-        cell.totalPriceTextField.text = String(total)
+        cell.nameTextField.text = String(cart.count)
+        cell.totalPriceTextField.text = String(orderHistoryItem.total)
         return cell
     }
 

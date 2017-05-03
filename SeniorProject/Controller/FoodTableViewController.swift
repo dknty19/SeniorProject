@@ -74,7 +74,7 @@ class FoodTableViewController: UITableViewController {
         
         let foodItem = foods[indexPath.row]
         cell.nameFoodLabel.text = foodItem.name
-        cell.priceFoodLabel.text = String(foodItem.price) + "$"
+        cell.priceFoodLabel.text = String(foodItem.price)
         if let imageURL = URL.init(string: foodItem.imageURL) {
             cell.foodImageView.downloadedFrom(url: imageURL)
         }

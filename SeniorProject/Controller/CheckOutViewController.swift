@@ -86,7 +86,7 @@ class CheckOutViewController: UIViewController {
                     cartItemRef.setValue(cartItem.toAnyObject())
                     
                 }
-                let billItem = Bill(id: idBill, uid: externalUid!, table: tableNumber, isPay: false)
+                let billItem = Bill(id: idBill, uid: externalUid!, isPay: false, table: tableNumber, total:self.total)
                 //add note child to bill
                 let billItemRef = self.refBill.child(idBill)
                 billItemRef.setValue(billItem.toAnyObject())
