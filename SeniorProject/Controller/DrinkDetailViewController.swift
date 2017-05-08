@@ -112,9 +112,9 @@ class DrinkDetailViewController: UIViewController {
             let price = Int(totalTextField.text!)!
             let image = drink.imageURL
 //            let isPay = false
-            let date = String(describing: Date())
+//            let date = String(describing: Date())
             
-            cart = Cart(id: id, idBill: "", name: name, quantity: quantity, price: price, image: image, date: date)
+            cart = Cart(id: id, idBill: "", name: name, quantity: quantity, price: price, image: image)
             superCart.append(cart)
             
             

@@ -10,5 +10,6 @@ import Foundation
 import Firebase
 
 var superCart = [Cart]()
-var tableNumber = 1
-var externalUid = FIRAuth.auth()?.currentUser!.uid
+var checkOut = [Cart]()
+var tableID: String?
+var externalUid: String? // = FIRAuth.auth()?.currentUser!.uid

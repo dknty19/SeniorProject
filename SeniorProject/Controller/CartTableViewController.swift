@@ -32,7 +32,14 @@ class CartTableViewController: UITableViewController {
             totalTextField.text = String(total)
         }
         
-        tableTextField.text = String(tableNumber)
+        tableTextField.text = tableID
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //refresh table view when click tab bar icon
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,13 +113,13 @@ class CartTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "checkOut" {
-            let destinationVIewController = segue.destination as! CheckOutViewController
-//            let destinationViewController = naviController.topViewController as! CheckOutViewController
-            destinationVIewController.checkOut = superCart
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "checkOut" {
+//            let destinationVIewController = segue.destination as! CheckOutViewController
+////            let destinationViewController = naviController.topViewController as! CheckOutViewController
+//            destinationVIewController.checkOut = superCart
+//        }
+//    }
     
     @IBAction func cancelCheckOut(_ segue: UIStoryboardSegue) {
     }

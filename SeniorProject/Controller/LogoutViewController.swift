@@ -38,14 +38,24 @@ class LogoutViewController: UIViewController {
     */
     
     @IBAction func signoutButtonPressed(_ sender: AnyObject) {
-        do {
-            try FIRAuth.auth()!.signOut()
-            dismiss(animated: true, completion: nil)
-            superCart.removeAll()
-            externalUid = nil
-        } catch {
-            
-        }
+        
+        let alertController = UIAlertController(title: "Logout", message: "Do you want to logout?", preferredStyle: .alert)
+        let defaultAlert = UIAlertAction(title: "OK", style: .default, handler: { _ in
+            do {
+                try FIRAuth.auth()!.signOut()
+                superCart.removeAll()
+                externalUid = nil
+                tableID = nil
+                let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "RootView")
+                UIApplication.shared.keyWindow?.rootViewController = newRootViewController
+            } catch {
+                
+            }
+        })
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(defaultAlert)
+        alertController.addAction(cancelAlert)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func showBill(_ sender: AnyObject) {
@@ -56,7 +66,6 @@ class LogoutViewController: UIViewController {
 //        if segue.identifier == "orderHistory" {
 //            let destinationViewController = segue.destination as! OrderHistoryTableViewController
 //            destinationViewController.orderHistory = billID
-//            print(self.billID.count)
 //        }
 //    }
 }

@@ -74,9 +74,9 @@ class FoodDetailTableViewController: UIViewController {
             let price = Int(totalLabel.text!)!
             let image = food.imageURL
 //            let isPay = true
-            let date = String(describing: Date())
+//            let date = String(describing: Date())
             
-            cart = Cart(id: id, idBill:"", name: name, quantity: quantity, price: price, image: image, date: date)
+            cart = Cart(id: id, idBill:"", name: name, quantity: quantity, price: price, image: image)
             superCart.append(cart)
             
             

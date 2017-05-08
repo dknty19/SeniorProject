@@ -1,57 +1,24 @@
 //
-//  OrderHistoryTableViewController.swift
+//  OrderDetailTableViewController.swift
 //  SeniorProject
 //
-//  Created by Vinh (Vern) H. NGUYEN on 4/26/17.
+//  Created by Vinh (Vern) H. NGUYEN on 5/5/17.
 //  Copyright © 2017 Vinh (Vern) H. NGUYEN. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
+import Firebase
 
-class OrderHistoryTableViewController: UITableViewController {
-
-    var orderHistory: [Bill] = []
-    var orderHistoryID: [Bill] = []
+class OrderDetailTableViewController: UITableViewController {
     
-    var cart:[Cart] = []
-    
-    let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills")
     let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts")
+
+    var orderDetail: [Bill] = []
+    var cartDetail: [Cart] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refBill.queryOrdered(byChild: "id").observe(.value, with: { snapshot in
-            var newOrderHistory: [Bill] = []
-            
-            for item in snapshot.children {
-                let bill = Bill(snapshot: item as! FIRDataSnapshot)
-                newOrderHistory.append(bill)
-            }
-            self.orderHistory = newOrderHistory
-
-            for i in 0...self.orderHistory.count - 1 {
-                if self.orderHistory[i].uid == externalUid! {
-                    self.orderHistoryID.append(self.orderHistory[i])
-                    print(self.orderHistoryID[i].id)
-                }
-            }
-            self.tableView.reloadData()
-            for i in 0...self.orderHistoryID.count - 1 {
-                print(self.orderHistoryID[i].uid)
-            }
-        })
         
-        refCart.queryOrdered(byChild: "name").queryEqual(toValue: externalUid!).observe(.value, with: { snapshot in
-            var newCart: [Cart] = []
-            
-            for item in snapshot.children {
-                let cart = Cart(snapshot: item as! FIRDataSnapshot)
-                newCart.append(cart)
-            }
-            self.cart = newCart
-            self.tableView.reloadData()
-        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,23 +30,23 @@ class OrderHistoryTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return orderHistoryID.count
+        return 0
     }
 
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OrderHistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        let orderHistoryItem = orderHistoryID[indexPath.row]
-        cell.idBillTextField.text = orderHistoryItem.id
-        cell.nameTextField.text = orderHistoryItem.date
-        cell.totalPriceTextField.text = String(orderHistoryItem.total)
+        // Configure the cell...
+
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -116,14 +83,14 @@ class OrderHistoryTableViewController: UITableViewController {
     }
     */
 
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            let destinationVC = segue.destination as! OrderDetailTableViewController
-            destinationVC.orderDetail = [orderHistoryID[indexPath.row]]
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }

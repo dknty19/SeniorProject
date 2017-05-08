@@ -17,16 +17,18 @@ class Bill {
     var uid:String
     var isPay:Bool
     let ref:FIRDatabaseReference!
-    var table:Int
+    var table:String?
     var total:Int
+    var date:String
     
-    init(key:String = "", id:String, uid:String, isPay:Bool, table:Int, total:Int) {
+    init(key:String = "", id:String, uid:String, isPay:Bool, table:String?, total:Int, date:String) {
         self.key = key
         self.id = id
         self.uid = uid
         self.isPay = isPay
         self.table = table
         self.total = total
+        self.date = date
         self.ref = nil
     }
     
@@ -36,9 +38,10 @@ class Bill {
         //        uid = snapshotValue["uid"] as! String
         id = snapshotValue["id"] as! String
         uid = snapshotValue["uid"] as! String
-        table = snapshotValue["table"] as! Int
+        table = snapshotValue["table"] as? String
         isPay = snapshotValue["isPay"] as! Bool
         total = snapshotValue["total"] as! Int
+        date = snapshotValue["date"] as! String
         ref = snapshot.ref
     }
     
@@ -48,8 +51,9 @@ class Bill {
             "id":id,
             "uid":uid,
             "isPay":isPay,
-            "table":table,
-            "total":total
+            "table":table!,
+            "total":total,
+            "date":date
         ]
     }
 

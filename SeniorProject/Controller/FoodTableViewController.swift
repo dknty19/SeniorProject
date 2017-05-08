@@ -50,6 +50,12 @@ class FoodTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("\(tableID)" + " idtable")
+    }
 
     // MARK: - Table view data source
 
@@ -88,10 +94,10 @@ class FoodTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFoodDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let naviController = segue.destination as! UINavigationController
-                let destinationController = naviController.topViewController as! FoodDetailTableViewController
+//                let naviController = segue.destination as! UINavigationController
+                let destinationController = segue.destination as! FoodDetailTableViewController
                 destinationController.food = foods[indexPath.row]
-//                destinationController.hidesBottomBarWhenPushed = false
+                destinationController.hidesBottomBarWhenPushed = false
             }
         }
     }

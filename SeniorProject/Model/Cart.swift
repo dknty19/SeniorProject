@@ -21,9 +21,9 @@ struct Cart {
     var image:String?
 //    var isPay:Bool?
     let ref:FIRDatabaseReference!
-    var date:String
+//    var date:String
     
-    init(key:String = "", /*uid:String,*/ id:String?, idBill:String, name:String, quantity:Int, price:Int, image:String?, /*isPay:Bool?,*/ date:String) {
+    init(key:String = "", /*uid:String,*/ id:String?, idBill:String, name:String, quantity:Int, price:Int, image:String? /*isPay:Bool?,*/) {
         self.key = key
 //        self.uid = uid
         self.id = id
@@ -33,7 +33,7 @@ struct Cart {
         self.price = price
         self.image = image
 //        self.isPay = isPay
-        self.date = date
+//        self.date = date
         self.ref = nil
     }
     
@@ -48,7 +48,7 @@ struct Cart {
         price = snapshotValue["price"] as! Int
         image = snapshotValue["image"] as? String
 //        isPay = snapshotValue["isPay"] as? Bool
-        date = snapshotValue["date"] as! String
+//        date = snapshotValue["date"] as! String
         ref = snapshot.ref
     }
 
@@ -62,7 +62,7 @@ struct Cart {
             "quantity": quantity,
             "price": price,
 //            "isPay":isPay!,
-            "date": date
+//            "date": date
         ]
     }
 }
