@@ -48,6 +48,7 @@
 		C333F22BC64FC49F892D54A8 /* Pods_SeniorProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131CB843FF9A5C88C41954CB /* Pods_SeniorProject.framework */; };
 		C50CC5D71EBAC66900B1AE39 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50CC5D61EBAC66900B1AE39 /* ScanViewController.swift */; };
 		C50CC5D91EBB09C800B1AE39 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50CC5D81EBB09C800B1AE39 /* Table.swift */; };
+		C50E82FD1EC05C99007DD01C /* OrderDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E82FC1EC05C99007DD01C /* OrderDetailTableViewCell.swift */; };
 		C53134EF1EB9D38E00CD2D9A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53134EE1EB9D38E00CD2D9A /* SWRevealViewController.m */; };
 		C5B2C3611EBC848C005869E6 /* OrderDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2C3601EBC848C005869E6 /* OrderDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,7 @@
 		B276A9A71D38CAAEA45E2C06 /* Pods-SeniorProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProject/Pods-SeniorProject.release.xcconfig"; sourceTree = "<group>"; };
 		C50CC5D61EBAC66900B1AE39 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanViewController.swift; path = Controller/ScanViewController.swift; sourceTree = "<group>"; };
 		C50CC5D81EBB09C800B1AE39 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Model/Table.swift; sourceTree = "<group>"; };
+		C50E82FC1EC05C99007DD01C /* OrderDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailTableViewCell.swift; path = View/OrderDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C53134ED1EB9D38E00CD2D9A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = ../../SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
 		C53134EE1EB9D38E00CD2D9A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C5B2C3601EBC848C005869E6 /* OrderDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailTableViewController.swift; path = Controller/OrderDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				576BB2DF1E8105A400599373 /* RestaurantDetailTableViewCell.swift */,
 				1D23918E1EA5C5D5007DC08B /* CartTableViewCell.swift */,
 				1D8D6E491EADDB43005B8F99 /* OrderHistoryTableViewCell.swift */,
+				C50E82FC1EC05C99007DD01C /* OrderDetailTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				1D23918D1EA5B9B3007DC08B /* CartTableViewController.swift in Sources */,
 				1D176EE41EA84ED70054240F /* Core.swift in Sources */,
 				5719D8651E822ED800F9ADE6 /* AddDrinkController.swift in Sources */,
+				C50E82FD1EC05C99007DD01C /* OrderDetailTableViewCell.swift in Sources */,
 				57A613781E8A53BA00478D79 /* User.swift in Sources */,
 				57F4121A1E7BA43100D7BF56 /* WalkthroughPageViewController.swift in Sources */,
 				1D5439E21EA0C37B00470823 /* Cart.swift in Sources */,

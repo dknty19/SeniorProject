@@ -13,11 +13,24 @@ class OrderDetailTableViewController: UITableViewController {
     
     let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts")
 
-    var orderDetail: [Bill] = []
+    var orderDetail: Bill!
     var cartDetail: [Cart] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refCart.child(orderDetail.id).queryOrdered(byChild: "id").observe(.value, with: { (snapshot) in
+            var newCart: [Cart] = []
+            
+            for item in snapshot.children {
+                let cart = Cart(snapshot: item as! FIRDataSnapshot)
+                newCart.append(cart)
+            }
+            self.cartDetail = newCart
+            self.tableView.reloadData()
+            print(self.orderDetail.id)
+        })
+        
         
     }
 
@@ -30,23 +43,25 @@ class OrderDetailTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return cartDetail.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OrderDetailTableViewCell
 
-        // Configure the cell...
+        cell.nameLabel.text = cartDetail[indexPath.row].name
+        cell.priceLabel.text = String(cartDetail[indexPath.row].price)
+        cell.sttLabel.text = String(indexPath.row + 1)
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -84,6 +84,8 @@ class FoodTableViewController: UITableViewController {
         if let imageURL = URL.init(string: foodItem.imageURL) {
             cell.foodImageView.downloadedFrom(url: imageURL)
         }
+        cell.foodImageView.layer.cornerRadius = 30.0
+        cell.foodImageView.clipsToBounds = true
         
         return cell
     }

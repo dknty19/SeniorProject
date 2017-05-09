@@ -17,8 +17,28 @@ class LogoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+//        if externalUid != nil {
+//            let logoutBtn = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(signoutButtonPressed(_:)))
+//            navigationItem.rightBarButtonItem = logoutBtn
+//            
+//            let showBillBtn = UIButton(frame: CGRect(x: 45.0, y: 145.0, width: 46.0, height: 30.0))
+//            showBillBtn.addTarget(self, action: #selector(showBill(_:)), for: .touchUpInside)
+//            showBillBtn.setTitle("Show Bill", for: .normal)
+//            showBillBtn.backgroundColor = UIColor.green
+//            self.view.addSubview(showBillBtn)
+//        }else {
+//            let loginBtn = UIButton(frame: CGRect(x: 45.0, y: 175.0, width: 46.0, height: 30.0))
+//            loginBtn.addTarget(self, action: #selector(performSegueInLogoutVC), for: .touchUpInside)
+//            loginBtn.backgroundColor = UIColor.green
+//            loginBtn.setTitle("Login", for: .normal)
+//            
+//            let register = UIButton(frame: CGRect(x: 45.0, y: 205.0, width: 46.0, height: 30.0))
+//            register.backgroundColor = UIColor.green
+//            register.setTitle("Register", for: .normal)
+//            self.view.addSubview(loginBtn)
+//            self.view.addSubview(register)
+//            
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +56,12 @@ class LogoutViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func performSegueInLogoutVC() {
+        performSegue(withIdentifier: "login", sender: self)
+    }
+    
+    // - MARK: IBAction
     
     @IBAction func signoutButtonPressed(_ sender: AnyObject) {
         
@@ -62,6 +88,7 @@ class LogoutViewController: UIViewController {
         
     }
     
+
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "orderHistory" {
 //            let destinationViewController = segue.destination as! OrderHistoryTableViewController

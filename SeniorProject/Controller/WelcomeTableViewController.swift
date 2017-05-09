@@ -109,10 +109,8 @@ class WelcomeTableViewController: UITableViewController {
 //    }
         
     // unwind segue
-    @IBAction func closeLogin(_ segue: UIStoryboardSegue) {
-    }
+    @IBAction func closeLogin(_ segue: UIStoryboardSegue) {}
     
-    @IBAction func closeRegister(_ segue: UIStoryboardSegue) {
-    }
+    @IBAction func closeRegister(_ segue: UIStoryboardSegue) {}
     
 }

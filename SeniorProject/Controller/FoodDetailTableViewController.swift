@@ -21,6 +21,7 @@ class FoodDetailTableViewController: UIViewController {
     var cart:Cart!
     
     var defaultQuantity = 1
+//    var quantity = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +58,15 @@ class FoodDetailTableViewController: UIViewController {
     @IBAction func addFoodToLabel(_ sender: UIButton) {
         defaultQuantity += 1
         increLabel.text = "\(defaultQuantity)"
-
         totalLabel.text = String(defaultQuantity * food.price)
+        defaultQuantity = Int(increLabel.text!)!
+    }
+    
+    @IBAction func minusFoodToLabel(_ sender: UIButton) {
+        defaultQuantity -= 1
+        increLabel.text = "\(defaultQuantity)"
+        totalLabel.text = String(defaultQuantity * food.price)
+        defaultQuantity = Int(increLabel.text!)!
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

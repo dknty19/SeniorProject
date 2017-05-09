@@ -82,6 +82,10 @@ class CartTableViewController: UITableViewController {
         return true
     }
     */
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableID
+    }
 
     
     // Override to support editing the table view.

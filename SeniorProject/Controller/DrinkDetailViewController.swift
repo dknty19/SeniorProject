@@ -15,10 +15,8 @@ class DrinkDetailViewController: UIViewController {
     @IBOutlet var descriptionTextField:UITextField!
     @IBOutlet var increLabel:UILabel!
     @IBOutlet var priceLabel:UILabel!
-//    @IBOutlet var nameDrinkLabel:UILabel!
     
     var defaultQuantity = 1
-//    var total = 0
     
     var cart:Cart!
     var carts = [Cart]()
@@ -27,8 +25,6 @@ class DrinkDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         //background color in table view
 //        tableView.backgroundColor = UIColor(red: 225.0/255.0, green: 85.0/255.0, blue: 80.0/255.0, alpha: 0.2)
@@ -96,8 +92,15 @@ class DrinkDetailViewController: UIViewController {
     @IBAction func addDrinkToLabel(_ sender: UIButton) {
         defaultQuantity += 1
         increLabel.text = "\(defaultQuantity)"
-        
         totalTextField.text = String(defaultQuantity * drink.price)
+        defaultQuantity = Int(increLabel.text!)!
+    }
+    
+    @IBAction func minusDrinkToLabel(_ sender: UIButton) {
+        defaultQuantity -= 1
+        increLabel.text = "\(defaultQuantity)"
+        totalTextField.text = String(defaultQuantity * drink.price)
+        defaultQuantity = Int(increLabel.text!)!
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

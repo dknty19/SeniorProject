@@ -18,6 +18,8 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var detector: CIDetector? = nil
     
+    var result1:String?
+    
     @IBOutlet weak var qrImageView: UIImageView!
     
     // MARK: Life cirle
@@ -33,16 +35,36 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
             self.table = newTable
         })
+        //show bar button item if login or scan
+        if externalUid != nil {
+            let logoutBtn = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(signoutButtonPressed(_:)))
+            self.navigationItem.rightBarButtonItem = logoutBtn
+        }else {
+            let backBtn = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dissmissScan))
+            self.navigationItem.leftBarButtonItem = backBtn
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //if user exist then show the alert
         if externalUid != nil {
             if self.isBeingPresented || self.isMovingToParentViewController {
                 let alertController = UIAlertController(title: "Login Successful", message: "You need to scan to see the menu.", preferredStyle: .alert)
                 let defaultAlert = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(defaultAlert)
                 self.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
+        //show the main home view
+        if result1 != nil {
+            for i in 0...table.count - 1 {
+                if  table[i].id == result1 {
+                    tableID = table[i].id
+                    let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "MainHome")
+                    UIApplication.shared.keyWindow?.rootViewController = newRootViewController
+                }
             }
         }
     }
@@ -107,21 +129,15 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
             // use the image
             if let imageCI = CIImage(image: image) {
                 let result = self.performQRCodeDetection(image: imageCI)
                 qrImageView.image = UIImage(ciImage: result.outImage!)
 //                    tableID = result.decode
-                let result1 = result.decode
-                
-                for i in 0...table.count - 1 {
-                    if  table[i].id == result1 {
-                        tableID = table[i].id
-                        let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "MainHome")
-                        UIApplication.shared.keyWindow?.rootViewController = newRootViewController
-                    }
-                }
+                result1 = result.decode
             }
+            
         }else{
             print("Something went wrong")
         }
@@ -132,4 +148,30 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    // - Mark: IBAction
+    
+    @IBAction func signoutButtonPressed(_ sender: UIBarButtonItem) {
+        
+        let alertController = UIAlertController(title: "Logout", message: "You are not at the restaurant, aren't you?", preferredStyle: .alert)
+        let defaultAlert = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            do {
+                try FIRAuth.auth()!.signOut()
+                externalUid = nil
+                let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "RootView")
+                UIApplication.shared.keyWindow?.rootViewController = newRootViewController
+            } catch {
+                
+            }
+        })
+        let cancelAlert = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alertController.addAction(defaultAlert)
+        alertController.addAction(cancelAlert)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func dissmissScan() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

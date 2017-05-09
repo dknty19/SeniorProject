@@ -30,13 +30,14 @@ class OrderHistoryTableViewController: UITableViewController {
             }
             self.orderHistory = newOrderHistory
 
-            for i in 0...self.orderHistory.count - 1 {
+            for i in 0...self.orderHistory.count - 1{
                 if self.orderHistory[i].uid == externalUid! {
                     self.orderHistoryID.append(self.orderHistory[i])
-                    print(self.orderHistoryID[i].id)
+                }else {
+                    print("false")
                 }
             }
-            self.tableView.reloadData()
+            
             for i in 0...self.orderHistoryID.count - 1 {
                 print(self.orderHistoryID[i].uid)
             }
@@ -120,9 +121,11 @@ class OrderHistoryTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            let destinationVC = segue.destination as! OrderDetailTableViewController
-            destinationVC.orderDetail = [orderHistoryID[indexPath.row]]
+        if segue.identifier == "showDetailBill" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationVC = segue.destination as! OrderDetailTableViewController
+                destinationVC.orderDetail = orderHistoryID[indexPath.row]
+            }
         }
     }
 
