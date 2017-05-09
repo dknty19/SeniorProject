@@ -17,6 +17,7 @@ class DrinkDetailViewController: UIViewController {
     @IBOutlet var priceLabel:UILabel!
     
     var defaultQuantity = 1
+    var priceAfterMultiple = 0
     
     var cart:Cart!
     var carts = [Cart]()
@@ -38,7 +39,8 @@ class DrinkDetailViewController: UIViewController {
         descriptionTextField.text = drink.type
         increLabel.text = String(defaultQuantity)
         priceLabel.text = String(drink.price)
-        totalTextField.text = String(drink.price)
+        totalTextField.text = String(drink.price) + " $"
+        priceAfterMultiple = drink.price
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,15 +94,17 @@ class DrinkDetailViewController: UIViewController {
     @IBAction func addDrinkToLabel(_ sender: UIButton) {
         defaultQuantity += 1
         increLabel.text = "\(defaultQuantity)"
-        totalTextField.text = String(defaultQuantity * drink.price)
+        totalTextField.text = String(defaultQuantity * drink.price) + " $"
         defaultQuantity = Int(increLabel.text!)!
     }
     
     @IBAction func minusDrinkToLabel(_ sender: UIButton) {
-        defaultQuantity -= 1
-        increLabel.text = "\(defaultQuantity)"
-        totalTextField.text = String(defaultQuantity * drink.price)
-        defaultQuantity = Int(increLabel.text!)!
+        if defaultQuantity > 1 {
+            defaultQuantity -= 1
+            increLabel.text = "\(defaultQuantity)"
+            totalTextField.text = String(defaultQuantity * drink.price) + " $"
+            defaultQuantity = Int(increLabel.text!)!
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,7 +116,7 @@ class DrinkDetailViewController: UIViewController {
 //            let table = tableNumber
             let name = drink.name
             let quantity = Int(increLabel.text!)!
-            let price = Int(totalTextField.text!)!
+            let price = priceAfterMultiple
             let image = drink.imageURL
 //            let isPay = false
 //            let date = String(describing: Date())

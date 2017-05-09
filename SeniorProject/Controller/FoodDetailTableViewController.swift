@@ -21,7 +21,7 @@ class FoodDetailTableViewController: UIViewController {
     var cart:Cart!
     
     var defaultQuantity = 1
-//    var quantity = 0
+    var priceAfterMultiple = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,8 @@ class FoodDetailTableViewController: UIViewController {
         descriptionTextField.text = food.name
         priceLabel.text = String(food.price)
         increLabel.text = String(defaultQuantity)
-        totalLabel.text = String(food.price)
+        totalLabel.text = String(food.price) + " $"
+        priceAfterMultiple = food.price
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,15 +59,17 @@ class FoodDetailTableViewController: UIViewController {
     @IBAction func addFoodToLabel(_ sender: UIButton) {
         defaultQuantity += 1
         increLabel.text = "\(defaultQuantity)"
-        totalLabel.text = String(defaultQuantity * food.price)
+        totalLabel.text = String(defaultQuantity * food.price) + " $"
         defaultQuantity = Int(increLabel.text!)!
     }
     
     @IBAction func minusFoodToLabel(_ sender: UIButton) {
-        defaultQuantity -= 1
-        increLabel.text = "\(defaultQuantity)"
-        totalLabel.text = String(defaultQuantity * food.price)
-        defaultQuantity = Int(increLabel.text!)!
+        if defaultQuantity > 1 {
+            defaultQuantity -= 1
+            increLabel.text = "\(defaultQuantity)"
+            totalLabel.text = String(defaultQuantity * food.price) + " $"
+            defaultQuantity = Int(increLabel.text!)!
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,7 +82,7 @@ class FoodDetailTableViewController: UIViewController {
 //            let table = tableNumber
             let name = food.name
             let quantity = Int(increLabel.text!)!
-            let price = Int(totalLabel.text!)!
+            let price = priceAfterMultiple
             let image = food.imageURL
 //            let isPay = true
 //            let date = String(describing: Date())
