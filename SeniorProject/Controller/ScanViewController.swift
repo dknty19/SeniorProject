@@ -49,7 +49,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidAppear(animated)
         //if user exist then show the alert
         if externalUid != nil {
-            if self.isBeingPresented || self.isMovingToParentViewController {
+            if self.isBeingPresented {
                 let alertController = UIAlertController(title: "Login Successful", message: "You need to scan to see the menu.", preferredStyle: .alert)
                 let defaultAlert = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(defaultAlert)

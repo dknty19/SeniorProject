@@ -236,8 +236,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a3K-Gw-qSn">
-                                <rect key="frame" x="85" y="447" width="35" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a3K-Gw-qSn">
+                                <rect key="frame" x="85" y="447" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
@@ -302,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqJ-zg-g6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2797.5999999999999" y="-104.7976011994003"/>
+            <point key="canvasLocation" x="2484" y="-104"/>
         </scene>
         <!--Food Detail Table View Controller-->
         <scene sceneID="VqK-dg-2Qs">
@@ -378,8 +378,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xq5-fG-ZzB">
-                                <rect key="frame" x="84" y="458" width="25" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xq5-fG-ZzB">
+                                <rect key="frame" x="84" y="458" width="51" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -436,7 +436,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eo-UA-MpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n8P-cb-hxX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2797.5999999999999" y="637.33133433283365"/>
+            <point key="canvasLocation" x="2484" y="607"/>
         </scene>
         <!--Add Drinks-->
         <scene sceneID="WN8-mS-hDp">
@@ -965,19 +965,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cu-8G-raH">
-                                <rect key="frame" x="36" y="108" width="100" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Order History"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGg-jY-vK3">
                                 <rect key="frame" x="43" y="146" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="My bill"/>
                                 <connections>
-                                    <action selector="showBill:" destination="mmw-Tt-4mw" eventType="touchUpInside" id="27U-8l-ODs"/>
                                     <segue destination="Ojd-1K-ghA" kind="show" identifier="" id="Kr6-0x-hnc"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhD-hz-8a1">
+                                <rect key="frame" x="43" y="72" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="Yq7-u3-w7Z" kind="show" identifier="" id="Lgd-a6-NY4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cu-8G-raH">
+                                <rect key="frame" x="39" y="110" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Order History"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -997,7 +1004,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fJ-lU-zRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1782" y="2033"/>
+            <point key="canvasLocation" x="1782" y="2023"/>
         </scene>
         <!--Order History Table View Controller-->
         <scene sceneID="jVq-uX-MEC">
@@ -1060,9 +1067,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="idBillTextField" destination="AvH-u0-w1g" id="8Y3-69-HjM"/>
-                                    <outlet property="nameTextField" destination="1GC-Y1-LcC" id="xWZ-ew-icB"/>
-                                    <outlet property="totalPriceTextField" destination="hSA-sd-k0L" id="IML-F2-Y1b"/>
+                                    <outlet property="idBillTextField" destination="AvH-u0-w1g" id="khR-N8-NhT"/>
+                                    <outlet property="nameTextField" destination="1GC-Y1-LcC" id="WFP-gh-WCj"/>
+                                    <outlet property="totalPriceTextField" destination="hSA-sd-k0L" id="1UW-A9-Lm3"/>
                                     <segue destination="Ysd-Xs-XCi" kind="show" identifier="showDetailBill" id="UHg-9Q-MR2"/>
                                 </connections>
                             </tableViewCell>
@@ -1075,7 +1082,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDn-8s-8Y6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2566" y="2033"/>
+            <point key="canvasLocation" x="2572" y="2023"/>
         </scene>
         <!--Order Detail Table View Controller-->
         <scene sceneID="duc-jm-dYH">
@@ -1138,7 +1145,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iku-XK-Hoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3319" y="2033"/>
+            <point key="canvasLocation" x="3334" y="2023"/>
         </scene>
         <!--Cart-->
         <scene sceneID="p4H-mf-WmE">
@@ -1252,7 +1259,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOW-KG-zyd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3822" y="191"/>
+            <point key="canvasLocation" x="3415" y="239"/>
         </scene>
         <!--Payment-->
         <scene sceneID="C19-rm-tKH">
@@ -1283,7 +1290,6 @@
                                         <state key="normal" title="Pay in person"/>
                                         <connections>
                                             <action selector="checkOutWithSender:" destination="EFY-Z5-1dm" eventType="touchUpInside" id="puE-fV-CSB"/>
-                                            <segue destination="VDz-Ii-r4Z" kind="show" identifier="LoginForPayment" id="O9H-sw-lCq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7j-Ah-7a2">
@@ -1316,7 +1322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGp-jW-XrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4569" y="190"/>
+            <point key="canvasLocation" x="4127" y="239"/>
         </scene>
         <!--Login-->
         <scene sceneID="f6F-dO-KZc">
@@ -1397,7 +1403,7 @@
                 <exit id="jj0-ho-AK8" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xdA-bU-bJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6052" y="190"/>
+            <point key="canvasLocation" x="5526" y="239"/>
         </scene>
         <!--Restaurant-->
         <scene sceneID="ve5-80-ujU">
@@ -1606,7 +1612,7 @@
                         <segue destination="F7v-4Q-a6K" kind="relationship" relationship="viewControllers" id="usU-Fs-BUy"/>
                         <segue destination="ebE-SJ-ZHK" kind="relationship" relationship="viewControllers" id="fIY-zp-JPM"/>
                         <segue destination="cha-Hz-L9Y" kind="relationship" relationship="viewControllers" id="rq0-EA-aZp"/>
-                        <segue destination="iDa-OM-Pka" kind="relationship" relationship="viewControllers" id="f5s-XD-33R"/>
+                        <segue destination="Gmn-cw-3gy" kind="relationship" relationship="viewControllers" id="3fy-7Q-vxU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEr-Jg-K0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1631,25 +1637,6 @@
             </objects>
             <point key="canvasLocation" x="2798" y="-881"/>
         </scene>
-        <!--Account-->
-        <scene sceneID="DZe-F9-DwZ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iDa-OM-Pka" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" image="Account" id="ZO3-2c-x0f"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rnW-tc-8qf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="mmw-Tt-4mw" kind="relationship" relationship="rootViewController" id="OHq-eB-eSH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9sW-JO-UW5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="974" y="2033"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="bmY-r9-jha">
             <objects>
@@ -1666,7 +1653,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJH-nj-OWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5316" y="190"/>
+            <point key="canvasLocation" x="4794" y="239"/>
         </scene>
         <!--Scan-->
         <scene sceneID="cPq-16-ebh">
@@ -1686,6 +1673,25 @@
             </objects>
             <point key="canvasLocation" x="-895" y="1417"/>
         </scene>
+        <!--Account-->
+        <scene sceneID="d75-LU-7Kf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gmn-cw-3gy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Account" image="Account" id="Fo8-jw-GfF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cxC-5L-jw6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mmw-Tt-4mw" kind="relationship" relationship="rootViewController" id="79x-vb-BoD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xyU-4E-fVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="2022.6386806596704"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Account" width="30" height="30"/>
@@ -1701,7 +1707,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uB4-Hl-ADN"/>
-        <segue reference="Pcp-5z-8lz"/>
+        <segue reference="Lgd-a6-NY4"/>
+        <segue reference="SAr-an-RAX"/>
         <segue reference="Afb-nZ-Irq"/>
         <segue reference="uIf-Of-7CY"/>
     </inferredMetricsTieBreakers>

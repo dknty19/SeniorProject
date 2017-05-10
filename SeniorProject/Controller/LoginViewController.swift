@@ -93,7 +93,7 @@ class LoginViewController: UIViewController {
             alertController.addAction(defaultAction)
             
             self.present(alertController, animated: true, completion: nil)
-            print("Cannot login 1")
+            print("Cannot login 2")
             
         } else {
             
@@ -118,7 +118,7 @@ class LoginViewController: UIViewController {
                     
                     self.present(alertController, animated: true, completion: nil)
                     
-                    print("-------Cannot login 1-------")
+                    print("-------Cannot login 2-------")
                 }
             }
         }

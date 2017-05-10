@@ -14,10 +14,7 @@ class OrderHistoryTableViewController: UITableViewController {
     var orderHistory: [Bill] = []
     var orderHistoryID: [Bill] = []
     
-    var cart:[Cart] = []
-    
     let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills")
-    let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,16 +38,6 @@ class OrderHistoryTableViewController: UITableViewController {
             for i in 0...self.orderHistoryID.count - 1 {
                 print(self.orderHistoryID[i].uid)
             }
-        })
-        
-        refCart.queryOrdered(byChild: "name").queryEqual(toValue: externalUid!).observe(.value, with: { snapshot in
-            var newCart: [Cart] = []
-            
-            for item in snapshot.children {
-                let cart = Cart(snapshot: item as! FIRDataSnapshot)
-                newCart.append(cart)
-            }
-            self.cart = newCart
             self.tableView.reloadData()
         })
     }
@@ -74,11 +61,12 @@ class OrderHistoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OrderHistoryTableViewCell
-
+        
         let orderHistoryItem = orderHistoryID[indexPath.row]
         cell.idBillTextField.text = orderHistoryItem.id
         cell.nameTextField.text = orderHistoryItem.date
         cell.totalPriceTextField.text = String(orderHistoryItem.total)
+        
         return cell
     }
 

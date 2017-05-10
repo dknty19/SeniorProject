@@ -13,6 +13,7 @@ class CheckOutViewController: UIViewController {
     
     let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts/")
     let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills/")
+    let refUser = FIRDatabase.database().reference()
     
 //    @IBOutlet var tableTextField:UITextField!
     @IBOutlet var totalTextField:UITextField!
@@ -62,44 +63,86 @@ class CheckOutViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }else{
             if externalUid == nil {
-                performSegue(withIdentifier: "LoginForPayment", sender: self)
+                let alerController1 = UIAlertController(title:"Payment", message: "Are you sure?", preferredStyle: .alert)
+                let defautlAction1 = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    
+                    let idBill = self.refBill.childByAutoId().key
+                    let date = String(describing: Date())
+                    externalUid = self.refUser.childByAutoId().key
+                    
+                    for i in 0...(superCart.count - 1) {
+                        //                    let uid = self.checkOut[i].uid
+                        let id = self.refCart.childByAutoId().key
+                        //                    let table = self.checkOut[i].table
+                        let name = superCart[i].name
+                        let price = superCart[i].price
+                        //                    let isPay = self.checkOut[i].isPay
+                        let image = superCart[i].image
+                        let quantity = superCart[i].quantity
+                        
+                        // add data
+                        let cartItem = Cart(id: id, idBill:idBill, name: name, quantity: quantity, price: price, image: image)
+                        
+                        //add note child to cart
+                        let cartItemRef = self.refCart.child(idBill).child(id)
+                        
+                        //
+                        cartItemRef.setValue(cartItem.toAnyObject())
+                        
+                    }
+                    let billItem = Bill(id: idBill, uid: externalUid!, isPay: false, table: tableID!, total:self.total, date:date)
+                    //add note child to bill
+                    let billItemRef = self.refBill.child(idBill)
+                    billItemRef.setValue(billItem.toAnyObject())
+                    
+                    //remove supercart after submit cart
+                    superCart.removeAll()
+                    let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "MainHome")
+                    UIApplication.shared.keyWindow?.rootViewController = newRootViewController
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alerController1.addAction(defautlAction1)
+                alerController1.addAction(cancelAction)
+                self.present(alerController1, animated: true, completion: nil)
             }else {
-            let alerController1 = UIAlertController(title:"Payment", message: "Are you sure?", preferredStyle: .alert)
-            let defautlAction1 = UIAlertAction(title: "OK", style: .default, handler: { _ in
                 
-                let idBill = self.refBill.childByAutoId().key
-                let date = String(describing: Date())
-                
-                for i in 0...(superCart.count - 1) {
-//                    let uid = self.checkOut[i].uid
-                    let id = self.refCart.childByAutoId().key
-//                    let table = self.checkOut[i].table
-                    let name = superCart[i].name
-                    let price = superCart[i].price
-//                    let isPay = self.checkOut[i].isPay
-                    let image = superCart[i].image
-                    let quantity = superCart[i].quantity
+                let alerController1 = UIAlertController(title:"Payment", message: "Are you sure?", preferredStyle: .alert)
+                let defautlAction1 = UIAlertAction(title: "OK", style: .default, handler: { _ in
                     
-                    // add data
-                    let cartItem = Cart(id: id, idBill:idBill, name: name, quantity: quantity, price: price, image: image)
+                    let idBill = self.refBill.childByAutoId().key
+                    let date = String(describing: Date())
                     
-                    //add note child to cart
-                    let cartItemRef = self.refCart.child(idBill).child(id)
+                    for i in 0...(superCart.count - 1) {
+    //                    let uid = self.checkOut[i].uid
+                        let id = self.refCart.childByAutoId().key
+    //                    let table = self.checkOut[i].table
+                        let name = superCart[i].name
+                        let price = superCart[i].price
+    //                    let isPay = self.checkOut[i].isPay
+                        let image = superCart[i].image
+                        let quantity = superCart[i].quantity
+                        
+                        // add data
+                        let cartItem = Cart(id: id, idBill:idBill, name: name, quantity: quantity, price: price, image: image)
+                        
+                        //add note child to cart
+                        let cartItemRef = self.refCart.child(idBill).child(id)
+                        
+                        //
+                        cartItemRef.setValue(cartItem.toAnyObject())
+                        
+                    }
+                    let billItem = Bill(id: idBill, uid: externalUid!, isPay: false, table: tableID!, total:self.total, date:date)
+                    //add note child to bill
+                    let billItemRef = self.refBill.child(idBill)
+                    billItemRef.setValue(billItem.toAnyObject())
                     
-                    //
-                    cartItemRef.setValue(cartItem.toAnyObject())
-                    
-                }
-                let billItem = Bill(id: idBill, uid: externalUid!, isPay: false, table: tableID!, total:self.total, date:date)
-                //add note child to bill
-                let billItemRef = self.refBill.child(idBill)
-                billItemRef.setValue(billItem.toAnyObject())
-                
-                //remove supercart after submit cart
-                superCart.removeAll()
-                let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "MainHome")
-                UIApplication.shared.keyWindow?.rootViewController = newRootViewController
-            })
+                    //remove supercart after submit cart
+                    superCart.removeAll()
+                    let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "MainHome")
+                    UIApplication.shared.keyWindow?.rootViewController = newRootViewController
+                })
                 
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alerController1.addAction(defautlAction1)
