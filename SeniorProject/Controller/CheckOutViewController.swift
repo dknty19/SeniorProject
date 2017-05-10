@@ -21,6 +21,7 @@ class CheckOutViewController: UIViewController {
 //    var checkOut = [Cart]()
     var bill = [Bill]()
     var total = 0
+    var dateTime = ""
 
     
     override func viewDidLoad() {
@@ -32,9 +33,9 @@ class CheckOutViewController: UIViewController {
             for i in 0...superCart.count - 1 {
                 total += superCart[i].price
             }
-            totalTextField.text = String(total)
+            totalTextField.text = String(total) + " $"
         }
-        
+        changeDate()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "barrafina.png")!)
     }
 
@@ -111,7 +112,7 @@ class CheckOutViewController: UIViewController {
                 let defautlAction1 = UIAlertAction(title: "OK", style: .default, handler: { _ in
                     
                     let idBill = self.refBill.childByAutoId().key
-                    let date = String(describing: Date())
+//                    let date = String(describing: Date())
                     
                     for i in 0...(superCart.count - 1) {
     //                    let uid = self.checkOut[i].uid
@@ -133,7 +134,7 @@ class CheckOutViewController: UIViewController {
                         cartItemRef.setValue(cartItem.toAnyObject())
                         
                     }
-                    let billItem = Bill(id: idBill, uid: externalUid!, isPay: false, table: tableID!, total:self.total, date:date)
+                    let billItem = Bill(id: idBill, uid: externalUid!, isPay: false, table: tableID!, total:self.total, date:self.dateTime)
                     //add note child to bill
                     let billItemRef = self.refBill.child(idBill)
                     billItemRef.setValue(billItem.toAnyObject())
@@ -153,4 +154,15 @@ class CheckOutViewController: UIViewController {
     }
     
     @IBAction func back(_ segue: UIStoryboardSegue){}
+    
+    func changeDate() {
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        dateTime = "\(day)-\(month)-\(year) \(hour)h:\(minutes)'"
+    }
 }

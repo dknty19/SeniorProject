@@ -30,16 +30,13 @@ class OrderHistoryTableViewController: UITableViewController {
             for i in 0...self.orderHistory.count - 1{
                 if self.orderHistory[i].uid == externalUid! {
                     self.orderHistoryID.append(self.orderHistory[i])
-                }else {
-                    print("false")
                 }
-            }
-            
-            for i in 0...self.orderHistoryID.count - 1 {
-                print(self.orderHistoryID[i].uid)
             }
             self.tableView.reloadData()
         })
+        
+        navigationItem.title = "Detail"
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,9 +60,9 @@ class OrderHistoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OrderHistoryTableViewCell
         
         let orderHistoryItem = orderHistoryID[indexPath.row]
-        cell.idBillTextField.text = orderHistoryItem.id
+        cell.idBillTextField.text = String(indexPath.row + 1)
         cell.nameTextField.text = orderHistoryItem.date
-        cell.totalPriceTextField.text = String(orderHistoryItem.total)
+        cell.totalPriceTextField.text = String(orderHistoryItem.total) + " $"
         
         return cell
     }
@@ -116,5 +113,4 @@ class OrderHistoryTableViewController: UITableViewController {
             }
         }
     }
-
 }

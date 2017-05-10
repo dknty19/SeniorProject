@@ -31,7 +31,8 @@ class OrderDetailTableViewController: UITableViewController {
             print(self.orderDetail.id)
         })
         
-        
+        navigationItem.title = "Order History"
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,8 +57,12 @@ class OrderDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OrderDetailTableViewCell
 
         cell.nameLabel.text = cartDetail[indexPath.row].name
-        cell.priceLabel.text = String(cartDetail[indexPath.row].price)
-        cell.sttLabel.text = String(indexPath.row + 1)
+        cell.priceLabel.text = String(cartDetail[indexPath.row].price) + " $"
+        if let imageURL = URL.init(string: cartDetail[indexPath.row].image!) {
+            cell.orderDetailImageView.downloadedFrom(url: imageURL)
+        }
+        cell.orderDetailImageView.layer.cornerRadius = 20.0
+        cell.orderDetailImageView.clipsToBounds = true
 
         return cell
     }

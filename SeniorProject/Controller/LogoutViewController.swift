@@ -17,16 +17,15 @@ class LogoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if externalUid != nil {
-//            let logoutBtn = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(signoutButtonPressed(_:)))
-//            navigationItem.rightBarButtonItem = logoutBtn
-//            
-//            let showBillBtn = UIButton(frame: CGRect(x: 45.0, y: 145.0, width: 46.0, height: 30.0))
-//            showBillBtn.addTarget(self, action: #selector(showBill(_:)), for: .touchUpInside)
-//            showBillBtn.setTitle("Show Bill", for: .normal)
-//            showBillBtn.backgroundColor = UIColor.green
-//            self.view.addSubview(showBillBtn)
-//        }else {
+        if externalUid != nil {
+            
+            let showBillBtn = UIButton(type: UIButtonType.system)
+            showBillBtn.frame = CGRect(x: 45, y: 145, width: 46, height: 30)
+            showBillBtn.addTarget(self, action: #selector(showBill(_:)), for: .touchUpInside)
+            showBillBtn.setTitle("My Bill", for: .normal)
+            
+            self.view.addSubview(showBillBtn)
+        }//else {
 //            let loginBtn = UIButton(frame: CGRect(x: 45.0, y: 175.0, width: 46.0, height: 30.0))
 //            loginBtn.addTarget(self, action: #selector(performSegueInLogoutVC), for: .touchUpInside)
 //            loginBtn.backgroundColor = UIColor.green
@@ -85,7 +84,7 @@ class LogoutViewController: UIViewController {
     }
     
     @IBAction func showBill(_ sender: AnyObject) {
-        
+        performSegue(withIdentifier: "ShowBill", sender: self)
     }
     
 

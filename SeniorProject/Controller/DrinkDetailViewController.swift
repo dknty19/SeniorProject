@@ -40,7 +40,7 @@ class DrinkDetailViewController: UIViewController {
         increLabel.text = String(defaultQuantity)
         priceLabel.text = String(drink.price)
         totalTextField.text = String(drink.price) + " $"
-        priceAfterMultiple = drink.price
+        priceAfterMultiple = drink.price * defaultQuantity
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,10 +54,6 @@ class DrinkDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    @IBAction func close(segue:UIStoryboardSegue) {
-//        
-//    }
     
 //    @IBAction func ratingButtonTapped(segue:UIStoryboardSegue) {
 //        if let rating = segue.identifier {
@@ -75,27 +71,13 @@ class DrinkDetailViewController: UIViewController {
     
     
     // MARK: - Navigation
-    /*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
-    //passing image to reviewViewController
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showReview" {
-//            let destinationController = segue.destinationViewController as ReviewViewController
-//            destinationController.restaurant = restaurant
-//        }
-//    }
     
     @IBAction func addDrinkToLabel(_ sender: UIButton) {
         defaultQuantity += 1
         increLabel.text = "\(defaultQuantity)"
         totalTextField.text = String(defaultQuantity * drink.price) + " $"
         defaultQuantity = Int(increLabel.text!)!
+        priceAfterMultiple = drink.price * defaultQuantity
     }
     
     @IBAction func minusDrinkToLabel(_ sender: UIButton) {
@@ -104,6 +86,7 @@ class DrinkDetailViewController: UIViewController {
             increLabel.text = "\(defaultQuantity)"
             totalTextField.text = String(defaultQuantity * drink.price) + " $"
             defaultQuantity = Int(increLabel.text!)!
+            priceAfterMultiple = drink.price * defaultQuantity
         }
     }
     
@@ -111,30 +94,21 @@ class DrinkDetailViewController: UIViewController {
         let destinationController = segue.destination as! CartTableViewController
         if segue.identifier == "addDrinkToCart" {
             
-//            let uid = externalUid!
             let id = ""
-//            let table = tableNumber
             let name = drink.name
             let quantity = Int(increLabel.text!)!
             let price = priceAfterMultiple
             let image = drink.imageURL
-//            let isPay = false
-//            let date = String(describing: Date())
             
             cart = Cart(id: id, idBill: "", name: name, quantity: quantity, price: price, image: image)
             superCart.append(cart)
             
             
             destinationController.cart = cart
-//            destinationController.drinkCart = drink
-            //destinationController.bills = bills
         }
         
         if segue.identifier == "showCart" {
             destinationController.cart = cart
-//            destinationController.drinkCart = drink
-//            destinationController.foodCart = food
-            //destinationController.bills = bills
         }
     }
 }

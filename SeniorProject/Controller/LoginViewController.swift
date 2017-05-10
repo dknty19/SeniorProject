@@ -104,9 +104,15 @@ class LoginViewController: UIViewController {
                     //Go to the HomeViewController if the login is sucessful
                     externalUid = user?.uid
                     print(externalUid! + "in loginVC")
-                    self.performSegue(withIdentifier: "Payment", sender: self)
+                    
+                    //check if there is cart or not
+                    if superCart.count != 0 {
+                        self.performSegue(withIdentifier: "Payment", sender: self)
                     //                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
                     //                    self.present(vc!, animated: true, completion: nil)
+                    }else {
+                        self.performSegue(withIdentifier: "login", sender: self)
+                    }
                     
                 } else {
                     

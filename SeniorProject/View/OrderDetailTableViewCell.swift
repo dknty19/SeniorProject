@@ -12,7 +12,7 @@ class OrderDetailTableViewCell: UITableViewCell {
 
     @IBOutlet var nameLabel:UILabel!
     @IBOutlet var priceLabel:UILabel!
-    @IBOutlet var sttLabel:UILabel!
+    @IBOutlet var orderDetailImageView:UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

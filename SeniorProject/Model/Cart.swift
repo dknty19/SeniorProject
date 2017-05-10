@@ -61,6 +61,7 @@ struct Cart {
             "name": name,
             "quantity": quantity,
             "price": price,
+            "image": image!
 //            "isPay":isPay!,
 //            "date": date
         ]

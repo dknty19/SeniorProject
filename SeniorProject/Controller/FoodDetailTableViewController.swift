@@ -42,7 +42,7 @@ class FoodDetailTableViewController: UIViewController {
         priceLabel.text = String(food.price)
         increLabel.text = String(defaultQuantity)
         totalLabel.text = String(food.price) + " $"
-        priceAfterMultiple = food.price
+        priceAfterMultiple = food.price * defaultQuantity
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +61,7 @@ class FoodDetailTableViewController: UIViewController {
         increLabel.text = "\(defaultQuantity)"
         totalLabel.text = String(defaultQuantity * food.price) + " $"
         defaultQuantity = Int(increLabel.text!)!
+        priceAfterMultiple = food.price * defaultQuantity
     }
     
     @IBAction func minusFoodToLabel(_ sender: UIButton) {
@@ -69,6 +70,7 @@ class FoodDetailTableViewController: UIViewController {
             increLabel.text = "\(defaultQuantity)"
             totalLabel.text = String(defaultQuantity * food.price) + " $"
             defaultQuantity = Int(increLabel.text!)!
+            priceAfterMultiple = food.price * defaultQuantity
         }
     }
     
