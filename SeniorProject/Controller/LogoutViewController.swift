@@ -20,9 +20,9 @@ class LogoutViewController: UIViewController {
         if externalUid != nil {
             
             let showBillBtn = UIButton(type: UIButtonType.system)
-            showBillBtn.frame = CGRect(x: 45, y: 145, width: 46, height: 30)
+            showBillBtn.frame = CGRect(x: 45, y: 110, width: 100, height: 30)
             showBillBtn.addTarget(self, action: #selector(showBill(_:)), for: .touchUpInside)
-            showBillBtn.setTitle("My Bill", for: .normal)
+            showBillBtn.setTitle("Order History", for: .normal)
             
             self.view.addSubview(showBillBtn)
         }//else {
