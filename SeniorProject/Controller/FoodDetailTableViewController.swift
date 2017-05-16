@@ -77,26 +77,31 @@ class FoodDetailTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addFoodToCart" {
             let destinationController = segue.destination as! CartTableViewController
-//            totalLabel.text = "1"
             
-//            let uid = externalUid!
-            let id = ""
-//            let table = tableNumber
-            let name = food.name
-            let quantity = Int(increLabel.text!)!
-            let price = priceAfterMultiple
-            let image = food.imageURL
-//            let isPay = true
-//            let date = String(describing: Date())
-            
-            cart = Cart(id: id, idBill:"", name: name, quantity: quantity, price: price, image: image)
-            superCart.append(cart)
-            
-            
-            destinationController.cart = cart
-//            destinationController.drinkCart = drink
-//            destinationController.foodCart = food
-            //destinationController.bills = bills
+            if tableID == nil {
+                let alertController = UIAlertController(title: "Warning!", message: "You need to scan before purchase.", preferredStyle: .alert)
+                let defautlAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    
+                    let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "Scan")
+                    UIApplication.shared.keyWindow?.rootViewController = newRootViewController
+                })
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                
+                alertController.addAction(cancelAction)
+                alertController.addAction(defautlAction)
+                self.present(alertController, animated: true, completion: nil)
+            }else {
+                let id = ""
+                let name = self.food.name
+                let quantity = Int(self.increLabel.text!)!
+                let price = self.priceAfterMultiple
+                let image = self.food.imageURL
+                
+                self.cart = Cart(id: id, idBill:"", name: name, quantity: quantity, price: price, image: image)
+                superCart.append(self.cart)
+                
+                destinationController.cart = self.cart
+            }
         }
     }
 

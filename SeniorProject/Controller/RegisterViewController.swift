@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet var usernameTextField:UITextField!
     @IBOutlet var passwordTextField:UITextField!
+    @IBOutlet var confirmPasswordTextField:UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,27 +45,33 @@ class RegisterViewController: UIViewController {
             
             present(alertController, animated: true, completion: nil)
             
-        } else {
+        } else if passwordTextField.text! == confirmPasswordTextField.text! {
             FIRAuth.auth()?.createUser(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
-                if error == nil {
-                    let alertController = UIAlertController(title: "Congratulations", message: "You have signed up successfully!", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    //Goes to the Setup page which lets the user take a photo for their
-                    self.performSegue(withIdentifier: "register", sender: self)
-                    
-                    
-                } else {
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
+                    if error == nil {
+                        let alertController = UIAlertController(title: "Congratulations", message: "You have signed up successfully!", preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        //Goes to the Setup page which lets the user take a photo for their
+                        self.performSegue(withIdentifier: "register", sender: self)
+                        
+                        
+                    } else {
+                        let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }
-            }
+        }else {
+            let alertController = UIAlertController(title: "Warning!", message: "Check your password again!", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 }

@@ -22,7 +22,7 @@ class CartTableViewController: UITableViewController {
         //detele footer view
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
-//        //show total price
+        //show total price
 //        if superCart.count == 0 {
 //            totalTextField.text = String(total)
 //        }else {
@@ -32,7 +32,6 @@ class CartTableViewController: UITableViewController {
 //            totalTextField.text = String(total)
 //        }
 //        
-//        tableTextField.text = tableID
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +83,10 @@ class CartTableViewController: UITableViewController {
     */
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return tableID
+        
+        if tableID == nil {
+            return ""
+        }else {return tableID}
     }
 
     

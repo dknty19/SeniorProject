@@ -21,6 +21,7 @@ class SidebarMenuTableViewController: UITableViewController {
         
         // delete a blank cell in table view
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +44,7 @@ class SidebarMenuTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.row == 2 {
             
         }
     }

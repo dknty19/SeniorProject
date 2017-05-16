@@ -64,6 +64,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     tableID = table[i].id
                     let newRootViewController = self.storyboard!.instantiateViewController(withIdentifier: "MainHome")
                     UIApplication.shared.keyWindow?.rootViewController = newRootViewController
+//                    self.present(newRootViewController, animated: true, completion: nil)
                 }
             }
         }
@@ -171,7 +172,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     func dissmissScan() {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

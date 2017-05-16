@@ -50,6 +50,7 @@
 		C50CC5D91EBB09C800B1AE39 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50CC5D81EBB09C800B1AE39 /* Table.swift */; };
 		C50E82FD1EC05C99007DD01C /* OrderDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E82FC1EC05C99007DD01C /* OrderDetailTableViewCell.swift */; };
 		C53134EF1EB9D38E00CD2D9A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53134EE1EB9D38E00CD2D9A /* SWRevealViewController.m */; };
+		C56A1EAB1EC9AFCC00FD84BA /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A1EAA1EC9AFCC00FD84BA /* ChangePasswordViewController.swift */; };
 		C5B2C3611EBC848C005869E6 /* OrderDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B2C3601EBC848C005869E6 /* OrderDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		C50E82FC1EC05C99007DD01C /* OrderDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailTableViewCell.swift; path = View/OrderDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C53134ED1EB9D38E00CD2D9A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = ../../SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
 		C53134EE1EB9D38E00CD2D9A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		C56A1EAA1EC9AFCC00FD84BA /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Controller/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C5B2C3601EBC848C005869E6 /* OrderDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailTableViewController.swift; path = Controller/OrderDetailTableViewController.swift; sourceTree = "<group>"; };
 		E21494196364ECF822BFB357 /* Pods_SeniorProjectSeniorProjects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeniorProjectSeniorProjects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF47B08FCB3D3CF2CECCC9F /* Pods-SeniorProjectSeniorProjects.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeniorProjectSeniorProjects.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeniorProjectSeniorProjects/Pods-SeniorProjectSeniorProjects.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				57AF60D01E8138A500EBC821 /* DessertTableViewController.swift */,
 				1D8D6E471EADDAD0005B8F99 /* CheckOutViewController.swift */,
 				1DD479681EB03BA100410AE2 /* LogoutViewController.swift */,
+				C56A1EAA1EC9AFCC00FD84BA /* ChangePasswordViewController.swift */,
 				1DC655041EB089FB0024F696 /* OrderHistoryTableViewController.swift */,
 				C5B2C3601EBC848C005869E6 /* OrderDetailTableViewController.swift */,
 				C50CC5D61EBAC66900B1AE39 /* ScanViewController.swift */,
@@ -503,6 +506,7 @@
 				57F412181E7BA1E600D7BF56 /* WalkthroughContentViewController.swift in Sources */,
 				57AF60D11E8138A500EBC821 /* DessertTableViewController.swift in Sources */,
 				57A6C9921E7F8A8A0035162B /* DrinkTableViewController.swift in Sources */,
+				C56A1EAB1EC9AFCC00FD84BA /* ChangePasswordViewController.swift in Sources */,
 				57F648CD1E88B1F2008B7DBB /* SidebarMenuTableViewController.swift in Sources */,
 				578336A81E91EE8B006E803B /* Food.swift in Sources */,
 				C50CC5D71EBAC66900B1AE39 /* ScanViewController.swift in Sources */,

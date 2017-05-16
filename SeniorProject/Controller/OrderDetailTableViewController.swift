@@ -31,7 +31,7 @@ class OrderDetailTableViewController: UITableViewController {
             print(self.orderDetail.id)
         })
         
-        navigationItem.title = "Order History"
+//        navigationItem.title = ""
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 

@@ -12,32 +12,56 @@ import FirebaseDatabase
 
 class LogoutViewController: UIViewController {
     
-    
     var billID: [Cart] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if externalUid != nil {
+        if FIRAuth.auth()?.currentUser != nil {
+            
+            let changePassBtn = UIButton(type: UIButtonType.system)
+            changePassBtn.frame = CGRect(x: 42, y: 110, width: 140, height: 30)
+            changePassBtn.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
+            changePassBtn.setTitle("Change Password", for: .normal)
             
             let showBillBtn = UIButton(type: UIButtonType.system)
-            showBillBtn.frame = CGRect(x: 45, y: 110, width: 100, height: 30)
+            showBillBtn.frame = CGRect(x: 43, y: 150, width: 100, height: 30)
             showBillBtn.addTarget(self, action: #selector(showBill(_:)), for: .touchUpInside)
             showBillBtn.setTitle("Order History", for: .normal)
-            
             self.view.addSubview(showBillBtn)
-        }//else {
-//            let loginBtn = UIButton(frame: CGRect(x: 45.0, y: 175.0, width: 46.0, height: 30.0))
-//            loginBtn.addTarget(self, action: #selector(performSegueInLogoutVC), for: .touchUpInside)
-//            loginBtn.backgroundColor = UIColor.green
-//            loginBtn.setTitle("Login", for: .normal)
-//            
-//            let register = UIButton(frame: CGRect(x: 45.0, y: 205.0, width: 46.0, height: 30.0))
-//            register.backgroundColor = UIColor.green
-//            register.setTitle("Register", for: .normal)
-//            self.view.addSubview(loginBtn)
-//            self.view.addSubview(register)
-//            
-//        }
+            
+            if tableID == nil {
+                let scanBtn = UIButton(type: UIButtonType.system)
+                scanBtn.frame = CGRect(x: 43, y: 70, width: 50, height: 30)
+                scanBtn.addTarget(self, action: #selector(showScan), for: .touchUpInside)
+                scanBtn.setTitle("Scan", for: .normal)
+                    
+                self.view.addSubview(scanBtn)
+            }
+            
+            self.view.addSubview(changePassBtn)
+            
+        }else
+            if externalUid != nil {
+                let showBillBtn = UIButton(type: UIButtonType.system)
+                showBillBtn.frame = CGRect(x: 43, y: 150, width: 100, height: 30)
+                showBillBtn.addTarget(self, action: #selector(showBill(_:)), for: .touchUpInside)
+                showBillBtn.setTitle("Order History", for: .normal)
+                self.view.addSubview(showBillBtn)
+                
+                let loginBtn = UIButton(type: UIButtonType.system)
+                loginBtn.frame = CGRect(x: 43, y: 110, width: 46, height: 30)
+                loginBtn.addTarget(self, action: #selector(showLoginScreen), for: .touchUpInside)
+                loginBtn.setTitle("Login", for: .normal)
+                
+                self.view.addSubview(loginBtn)
+            }else{
+                let loginBtn = UIButton(type: UIButtonType.system)
+                loginBtn.frame = CGRect(x: 43, y: 110, width: 46, height: 30)
+                loginBtn.addTarget(self, action: #selector(showLoginScreen), for: .touchUpInside)
+                loginBtn.setTitle("Login", for: .normal)
+                
+                self.view.addSubview(loginBtn)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,10 +80,17 @@ class LogoutViewController: UIViewController {
     }
     */
     
-    func performSegueInLogoutVC() {
+    func showLoginScreen() {
         performSegue(withIdentifier: "login", sender: self)
     }
     
+    func changePassword() {
+        performSegue(withIdentifier: "changePassword", sender: self)
+    }
+    
+    func showScan() {
+        performSegue(withIdentifier: "showScan", sender: self)
+    }
     // - MARK: IBAction
     
     @IBAction func signoutButtonPressed(_ sender: AnyObject) {
@@ -87,7 +118,8 @@ class LogoutViewController: UIViewController {
         performSegue(withIdentifier: "ShowBill", sender: self)
     }
     
-
+    @IBAction func back(_ segue: UIStoryboardSegue){}
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "orderHistory" {
 //            let destinationViewController = segue.destination as! OrderHistoryTableViewController
