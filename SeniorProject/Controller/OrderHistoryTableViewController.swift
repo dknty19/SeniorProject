@@ -67,6 +67,11 @@ class OrderHistoryTableViewController: UITableViewController {
         cell.idBillTextField.text = String(indexPath.row + 1)
         cell.nameTextField.text = orderHistoryItem.date
         cell.totalPriceTextField.text = String(orderHistoryItem.total) + " $"
+        if orderHistoryItem.isPay == true {
+            cell.checkOutImageView.image = UIImage(named: "Checked-15")
+        }else {
+            cell.checkOutImageView.image = UIImage(named: "Cancel-15")
+        }
         
         return cell
     }

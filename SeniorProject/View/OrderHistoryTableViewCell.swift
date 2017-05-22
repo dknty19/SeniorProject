@@ -13,6 +13,7 @@ class OrderHistoryTableViewCell: UITableViewCell {
     @IBOutlet var nameTextField:UITextField!
     @IBOutlet var totalPriceTextField:UITextField!
     @IBOutlet var idBillTextField:UITextField!
+    @IBOutlet var checkOutImageView:UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
