@@ -15,6 +15,7 @@ class OrderHistoryTableViewController: UITableViewController {
     var orderHistoryID: [Bill] = []
     
     let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills")
+    let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +27,13 @@ class OrderHistoryTableViewController: UITableViewController {
                 newOrderHistory.append(bill)
             }
             self.orderHistory = newOrderHistory
-
-            for i in 0...self.orderHistory.count - 1{
-                if self.orderHistory[i].uid == externalUid! {
-                    self.orderHistoryID.append(self.orderHistory[i])
+            
+            if self.orderHistory.count != 0 {
+            
+                for i in 0...self.orderHistory.count - 1{
+                    if self.orderHistory[i].uid == externalUid! {
+                        self.orderHistoryID.append(self.orderHistory[i])
+                    }
                 }
             }
             self.tableView.reloadData()
@@ -80,7 +84,11 @@ class OrderHistoryTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             orderHistoryID.remove(at: indexPath.row)
+            
+            refBill.child(orderHistory[indexPath.row].id).removeValue()
+            refCart.child(orderHistory[indexPath.row].id).removeValue()
             self.tableView.deleteRows(at: [indexPath], with: .fade)
+        
         }
     }
 
