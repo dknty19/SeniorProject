@@ -19,7 +19,7 @@ class OrderHistoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refBill.queryOrdered(byChild: "id").observe(.value, with: { snapshot in
+        refBill.queryOrdered(byChild: "id").observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             var newOrderHistory: [Bill] = []
             
             for item in snapshot.children {
@@ -86,14 +86,15 @@ class OrderHistoryTableViewController: UITableViewController {
 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            orderHistoryID.remove(at: indexPath.row)
-            
-            refBill.child(orderHistory[indexPath.row].id).removeValue()
-            refCart.child(orderHistory[indexPath.row].id).removeValue()
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        
+        if orderHistory[indexPath.row].isPay == true {
+            if editingStyle == .delete {
+                // Delete the row from the data source
+                orderHistoryID.remove(at: indexPath.row)
+                
+                refBill.child(orderHistory[indexPath.row].id).removeValue()
+                refCart.child(orderHistory[indexPath.row].id).removeValue()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
 

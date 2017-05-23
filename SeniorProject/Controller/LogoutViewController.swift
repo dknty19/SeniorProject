@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class LogoutViewController: UIViewController {
     
+    let resRef = FIRDatabase.database().reference(withPath: "Restaurants/Image")
     var billID: [Cart] = []
     
     override func viewDidLoad() {
@@ -119,6 +120,14 @@ class LogoutViewController: UIViewController {
     }
     
     @IBAction func back(_ segue: UIStoryboardSegue){}
+    
+    @IBAction func sharing(_ sender: AnyObject) {
+        let defaultText = "Just checking in at Restaurant"
+        if let imageToShare = UIImage(named: "imageRestaurant") {
+        let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+            self.present(activityController, animated: true, completion: nil)
+        }
+    }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "orderHistory" {
