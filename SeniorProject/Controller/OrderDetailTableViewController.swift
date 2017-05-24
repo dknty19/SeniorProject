@@ -11,6 +11,7 @@ import Firebase
 
 class OrderDetailTableViewController: UITableViewController {
     
+    let refBill = FIRDatabase.database().reference(withPath: "Restaurant/Bills")
     let refCart = FIRDatabase.database().reference(withPath: "Restaurant/Carts")
 
     var orderDetail: Bill!
@@ -19,18 +20,17 @@ class OrderDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refCart.child(orderDetail.id).queryOrdered(byChild: "id").observe(.value, with: { (snapshot) in
-            var newCart: [Cart] = []
-            
-            for item in snapshot.children {
-                let cart = Cart(snapshot: item as! FIRDataSnapshot)
-                newCart.append(cart)
-            }
-            self.cartDetail = newCart
-            self.tableView.reloadData()
-            print(self.orderDetail.id)
-        })
-        
+            refCart.child(orderDetail.id).queryOrdered(byChild: "id").observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                var newCart: [Cart] = []
+                
+                for item in snapshot.children {
+                    let cart = Cart(snapshot: item as! FIRDataSnapshot)
+                    newCart.append(cart)
+                }
+                self.cartDetail = newCart
+                
+                self.tableView.reloadData()
+            })
 //        navigationItem.title = ""
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
@@ -76,17 +76,22 @@ class OrderDetailTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            print(cartDetail[indexPath.row].id!)
+            refCart.child(orderDetail.id).child(cartDetail[indexPath.row].id!).removeValue()
+            
+            cartDetail.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            
+            if cartDetail.count == 0 {
+                refBill.child(orderDetail.id).removeValue()
+//                tableView.reloadData()
+            }
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

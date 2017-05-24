@@ -57,9 +57,7 @@ class CheckOutViewController: UIViewController {
     @IBAction func checkOut(sender: UIButton!) {
         if superCart.count == 0 {
             let alertController = UIAlertController(title: "Warning!", message: "There is nothing to purchase. Please come back and choose one item.", preferredStyle: .alert)
-            let defautlAction = UIAlertAction(title: "OK", style: .default, handler: nil
-//                { _ in                self.dismiss(animated: true, completion: nil)}
-            )
+            let defautlAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defautlAction)
             self.present(alertController, animated: true, completion: nil)
         }else

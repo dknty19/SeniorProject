@@ -20,12 +20,12 @@ class LogoutViewController: UIViewController {
         if FIRAuth.auth()?.currentUser != nil {
             
             let changePassBtn = UIButton(type: UIButtonType.system)
-            changePassBtn.frame = CGRect(x: 42, y: 110, width: 140, height: 30)
+            changePassBtn.frame = CGRect(x: 43, y: 110, width: 140, height: 30)
             changePassBtn.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
             changePassBtn.setTitle("Change Password", for: .normal)
             
             let showBillBtn = UIButton(type: UIButtonType.system)
-            showBillBtn.frame = CGRect(x: 43, y: 150, width: 100, height: 30)
+            showBillBtn.frame = CGRect(x: 46, y: 150, width: 100, height: 30)
             showBillBtn.addTarget(self, action: #selector(showBill(_:)), for: .touchUpInside)
             showBillBtn.setTitle("Order History", for: .normal)
             self.view.addSubview(showBillBtn)

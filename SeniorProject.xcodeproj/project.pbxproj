@@ -156,6 +156,7 @@
 		57A613721E8A526A00478D79 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5719D8641E822ED800F9ADE6 /* AddDrinkController.swift */,
 				57F412171E7BA1E600D7BF56 /* WalkthroughContentViewController.swift */,
 				57F412191E7BA43100D7BF56 /* WalkthroughPageViewController.swift */,
 				57F648CC1E88B1F2008B7DBB /* SidebarMenuTableViewController.swift */,
@@ -167,7 +168,6 @@
 				57A6C9911E7F8A8A0035162B /* DrinkTableViewController.swift */,
 				576BB2DD1E80F7AC00599373 /* DrinkDetailViewController.swift */,
 				1D23918C1EA5B9B2007DC08B /* CartTableViewController.swift */,
-				5719D8641E822ED800F9ADE6 /* AddDrinkController.swift */,
 				57AF60D01E8138A500EBC821 /* DessertTableViewController.swift */,
 				1D8D6E471EADDAD0005B8F99 /* CheckOutViewController.swift */,
 				1DD479681EB03BA100410AE2 /* LogoutViewController.swift */,
